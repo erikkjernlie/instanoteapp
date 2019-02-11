@@ -1,3 +1,13 @@
+https://www.youtube.com/watch?v=hZswcXSd5GA
+
+Currently on: #5
+
+
+VIDEO 18 tries to explain much of the process
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

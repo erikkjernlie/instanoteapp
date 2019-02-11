@@ -1,0 +1,32 @@
+
+.item__container {
+    width: 100%;
+    display: flex;
+    height: auto;
+    padding: 10px 10px;
+    background-color: #FF0432;
+    font-size: 14px;
+}
+
+.item__date {
+    width: 40px;
+    background-color: grey;
+
+}
+
+.item__content {
+    width: 100%;
+    background-color: lightblue;
+    padding: 0px 10px;
+
+}
+
+.item__garbage {
+    width: 40px;
+    background-color: tomato;
+}
+
+.item__garbage-icon {
+    width: 40px;
+    height: 40px;
+}

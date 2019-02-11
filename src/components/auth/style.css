@@ -1,0 +1,491 @@
+.login_wrapper {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 40px);
+    position: absolute;
+    background-color: #5e5554;
+    
+}
+
+.login_container {
+    
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login_component {
+    margin: 0px 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.signup_title {
+    font-size: 4rem;
+    color: #fbb844;
+    text-align: center;
+
+}
+.signup_subtitle {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #5e5554;
+
+}
+
+
+
+.login_form {
+    width: auto;
+    max-width: 500px;
+    height: auto;
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    padding: 30px;
+    box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.75);
+
+}
+
+.login_picture {
+    display: flex;
+    width: 300px;
+    background-color: red;
+    background-image: url('../../assets/header.png');
+    background-size: cover;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 2rem;
+    align-items: center;
+    color: white;
+    padding-bottom: 15%;
+}
+
+.login_title {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 4rem;
+    color: #fbb844;
+
+}
+
+.login_item {
+    font-family: 'Indie Flower', cursive;   
+}
+
+.login_input_label {
+    width: 100%;
+    display: flex;
+    padding: 1px;
+    justify-content: space-between;
+    background-color: grey;
+    height: 40px;
+}
+
+.label {
+    margin-right: 30px;
+    flex: 1;
+}
+
+
+
+.input_field {
+    bottom: 0px;
+    color: rgb(85, 85, 85);
+    left: 0px;
+    position: relative;
+    right: 0px;
+    text-decoration: none solid rgb(85, 85, 85);
+    text-size-adjust: 100%;
+    top: 0px;
+    width: 242px;
+    column-rule-color: rgb(85, 85, 85);
+    perspective-origin: 121px 21.7969px;
+    transform-origin: 121px 21.7969px;
+    caret-color: rgb(85, 85, 85);
+    border: 1px solid grey;
+    border-radius: 4px 4px 4px 4px;
+    font: normal normal 400 normal 14.4px / 16px Roboto, "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+    margin: 0px 10px 0px 0px;
+    outline: rgb(85, 85, 85) none 0px;
+    padding: 12.8px 10px;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}/*#INPUT_1*/
+
+.input_field:after {
+    color: rgb(85, 85, 85);
+    text-decoration: none solid rgb(85, 85, 85);
+    text-size-adjust: 100%;
+    column-rule-color: rgb(85, 85, 85);
+    caret-color: rgb(85, 85, 85);
+    border: 0px none rgb(85, 85, 85);
+    font: normal normal 400 normal 14.4px / 16px Roboto, "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+    outline: rgb(85, 85, 85) none 0px;
+}/*#INPUT_1:after*/
+
+.input_field:before {
+    color: rgb(85, 85, 85);
+    text-decoration: none solid rgb(85, 85, 85);
+    text-size-adjust: 100%;
+    column-rule-color: rgb(85, 85, 85);
+    caret-color: rgb(85, 85, 85);
+    border: 0px none rgb(85, 85, 85);
+    font: normal normal 400 normal 14.4px / 16px Roboto, "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+    outline: rgb(85, 85, 85) none 0px;
+}/*#INPUT_1:before*/
+
+.btn_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+
+}
+.btn {
+    bottom: 0px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: flex;
+    left: 0px;
+    max-width: 200px;
+    width: 100%;
+    position: relative;
+    right: 0px;
+    text-decoration: none solid rgb(255, 255, 255);
+    text-shadow: rgba(0, 0, 0, 0.125) 0px 1px 0px;
+    text-size-adjust: 100%;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    top: 0px;
+    vertical-align: middle;
+    white-space: nowrap;
+    z-index: 10;
+    column-rule-color: rgb(255, 255, 255);
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    perspective-origin: 69.3125px 22px;
+    transform-origin: 69.3125px 22px;
+    caret-color: rgb(255, 255, 255);
+    background: #fbb844 none repeat scroll 0% 0% / auto padding-box border-box;
+    border: 1px solid rgba(0, 0, 0, 0.176);
+    border-radius: 4px 4px 4px 4px;
+    flex: 1 1 auto;
+    font: normal normal 400 normal 16px / 20px Roboto, "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+    outline: rgb(255, 255, 255) none 0px;
+    padding: 12px 16px;
+    transition: all 0.175s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+}/*#BUTTON_1*/
+
+.btn:after {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    min-height: auto;
+    min-width: auto;
+    text-decoration: none solid rgb(255, 255, 255);
+    text-shadow: rgba(0, 0, 0, 0.125) 0px 1px 0px;
+    text-size-adjust: 100%;
+    text-transform: capitalize;
+    white-space: nowrap;
+    column-rule-color: rgb(255, 255, 255);
+    caret-color: rgb(255, 255, 255);
+    border: 0px none rgb(255, 255, 255);
+    font: normal normal 400 normal 16px / 20px Roboto, "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+    outline: rgb(255, 255, 255) none 0px;
+}/*#BUTTON_1:after*/
+
+.btn:before {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    min-height: auto;
+    min-width: auto;
+    text-decoration: none solid rgb(255, 255, 255);
+    text-shadow: rgba(0, 0, 0, 0.125) 0px 1px 0px;
+    text-size-adjust: 100%;
+    text-transform: capitalize;
+    white-space: nowrap;
+    column-rule-color: rgb(255, 255, 255);
+    caret-color: rgb(255, 255, 255);
+    border: 0px none rgb(255, 255, 255);
+    font: normal normal 400 normal 16px / 20px Roboto, "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+    outline: rgb(255, 255, 255) none 0px;
+}/*#BUTTON_1:before*/
+
+.btn:hover {
+    background-color: grey;
+}
+
+.lds-facebook {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+  }
+  .lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 6px;
+    width: 13px;
+    background: #fff;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  }
+  .lds-facebook div:nth-child(1) {
+    left: 6px;
+    animation-delay: -0.24s;
+  }
+  .lds-facebook div:nth-child(2) {
+    left: 26px;
+    animation-delay: -0.12s;
+  }
+  .lds-facebook div:nth-child(3) {
+    left: 45px;
+    animation-delay: 0;
+  }
+  @keyframes lds-facebook {
+    0% {
+      top: 6px;
+      height: 51px;
+    }
+    50%, 100% {
+      top: 19px;
+      height: 26px;
+    }
+  }
+  
+
+
+
+  /*
+P.S: if you like my content maybe you will become a donator and donate some money? That helps me to create new awesome materials. https://www.paypal.me/melnik909
+*/
+
+/*
+=====
+LEVEL 1. RESET STYLES
+=====
+*/
+
+.page {
+    min-width: 400px;
+    min-height: auto;
+    background-color: blue;
+    display: flex;
+}
+.page__demo {
+    display: flex;
+    flex-direction: row;
+}
+.field{
+    --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #767676);
+  }
+  
+  .field__input{ 
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+  
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  
+    font-family: inherit;
+    font-size: 1em;
+  }
+  
+  .field__input:focus::-webkit-input-placeholder{
+    color: var(--uiFieldPlaceholderColor);
+  }
+  
+  .field__input:focus::-moz-placeholder{
+    color: var(--uiFieldPlaceholderColor);
+    opacity: 1;
+  }
+  
+  /*
+  =====
+  LEVEL 2. CORE STYLES
+  =====
+  */
+  
+  .a-field{
+    display: inline-block;
+  }
+  
+  .a-field__input{ 
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+  .a-field__input:focus{
+    outline: none;
+  }
+  
+  /*
+  =====
+  LEVEL 3. PRESENTATION STYLES
+  =====
+  */
+  
+  /* a-field */
+  
+  .a-field{
+    --uiFieldHeight: var(--fieldHeight, 40px);  
+    --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
+    --uiFieldBorderColor: var(--fieldBorderColor);
+  
+    --uiFieldFontSize: var(--fieldFontSize, 1em);
+    --uiFieldHintFontSize: var(--fieldHintFontSize, 1em);
+  
+    --uiFieldPaddingRight: var(--fieldPaddingRight, 15px);
+    --uiFieldPaddingBottom: var(--fieldPaddingBottom, 15px);
+    --uiFieldPaddingLeft: var(--fieldPaddingLeft, 15px);   
+  
+    position: relative;
+    box-sizing: border-box;
+    font-size: var(--uiFieldFontSize);
+    padding-top: 1em;  
+  }
+  
+  .a-field .a-field__input{
+    height: var(--uiFieldHeight);
+    padding: 0 var(--uiFieldPaddingRight) 0 var(--uiFieldPaddingLeft);
+    border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColor);  
+  }
+  
+  .a-field .a-field__input::-webkit-input-placeholder{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+  }
+  
+  .a-field .a-field__input::-moz-placeholder{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+  }
+  
+  .a-field .a-field__input:not(:placeholder-shown) ~ .a-field__label-wrap .a-field__label{
+    opacity: 0;
+    bottom: var(--uiFieldPaddingBottom);
+  }
+  
+  .a-field .a-field__input:focus::-webkit-input-placeholder{
+    opacity: 1;
+    transition-delay: .2s;
+  }
+  
+  .a-field .a-field__input:focus::-moz-placeholder{
+    opacity: 1;
+    transition-delay: .2s;
+  }
+  
+  .a-field .a-field__label-wrap{
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--uiFieldHeight);	
+  
+    pointer-events: none;
+    cursor: text;
+  
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .a-field .a-field__label{
+    position: absolute;
+    left: var(--uiFieldPaddingLeft);
+    bottom: calc(50% - .5em);
+  
+    line-height: 1;
+    font-size: var(--uiFieldHintFontSize);
+  
+    pointer-events: none;
+    transition: bottom .2s cubic-bezier(0.9,-0.15, 0.1, 1.15), opacity .2s ease-out;
+    will-change: bottom, opacity;
+  }
+  
+  .a-field .a-field__input:focus ~ .a-field__label-wrap .a-field__label{
+    opacity: 1;
+    bottom: var(--uiFieldHeight);
+  }
+  
+  /* a-field_a1 */
+  
+  .a-field_a1 .a-field__input{
+    transition: border-color .2s ease-out;
+    will-change: border-color;
+  }
+  
+  .a-field_a1 .a-field__input:focus{
+    border-color: var(--fieldBorderColorActive);
+  }
+  
+  /* a-field_a2 */
+  
+  .a-field_a2 .a-field__label-wrap:after{
+    content: "";
+    box-sizing: border-box;
+    width: 0;
+    height: var(--uiFieldBorderWidth);
+    background-color: var(--fieldBorderColorActive);
+  
+    position: absolute;
+    bottom: 0;
+    left: 0;  
+  
+    will-change: width;
+    transition: width .285s ease-out;
+  }
+  
+  .a-field_a2 .a-field__input:focus ~ .a-field__label-wrap:after{
+    width: 100%;
+  }
+  
+  /* a-field_a3 */
+  
+  .a-field_a3{
+    padding-top: 1.5em;
+  }
+  
+  .a-field_a3 .a-field__label-wrap:after{
+    content: "";
+    box-sizing: border-box;
+    width: 100%;
+    height: 0;
+  
+    opacity: 0;
+    border: var(--uiFieldBorderWidth) solid var(--fieldBorderColorActive);
+  
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  
+    will-change: opacity, height;
+    transition: height .2s ease-out, opacity .2s ease-out;
+  }
+  
+  .a-field_a3 .a-field__input:focus ~ .a-field__label-wrap:after{
+    height: 100%;
+    opacity: 1;
+  }
+  
+  .a-field_a3 .a-field__input:focus ~ .a-field__label-wrap .a-field__label{
+    bottom: calc(var(--uiFieldHeight) + .5em);
+  }
+  
+  /*
+  =====
+  LEVEL 4. SETTINGS
+  =====
+  */
+  
+  .field{
+      width: 100%;
+    --fieldBorderColor: #453838;
+    --fieldBorderColorActive: #fbb844;
+  }
+  

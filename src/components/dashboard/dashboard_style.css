@@ -1,0 +1,7 @@
+.dashboard_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: blue;
+}
