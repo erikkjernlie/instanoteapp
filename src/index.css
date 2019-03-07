@@ -1,3 +1,7 @@
+@import "~normalize.css";
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+
 body {
   margin: 0;
   padding: 0;
@@ -5,6 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
+  background-color: #453838 !important;
 }
 
 code {
@@ -16,3 +21,18 @@ code {
 html {
   text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
 }
+
+.App {
+  background-color: #453838;
+
+}
+.app_container {
+  position: absolute;
+  z-index: 1;
+  top: 50px;
+  width: 100%;
+  height: calc(100vh-50px);
+  background-color: #453838;
+
+}
+

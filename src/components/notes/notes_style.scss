@@ -1,0 +1,525 @@
+* {
+    box-sizing: border-box;
+  }
+/* css for Instanote.js */
+
+
+.instanote__container {
+height: calc(100vh-50px);
+    
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.one_note {
+    
+}
+
+.instanote__share-icon-copy-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #fff1d5;
+  border-radius: 5px;
+
+}
+
+.instanote__share-icon-copy-wrapper:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}
+
+
+.instanote__share-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+  width: auto;
+  margin-left: 8px;
+
+  
+
+}
+
+
+
+
+
+.instanote__share-icon-standard:hover {
+  background-color: lightgrey;
+  
+  border-radius: 3px;
+}
+
+.instanote__share-icon-standard {
+  padding: 5px 5px;
+  margin: 5px 0px;
+}
+
+
+.instanote__wrapper {
+    position: fixed;
+    background-image: url('../../assets/instanote_background.jpg'); 
+    background-size: cover; 
+    height: 100vh;
+    width: 100vw;
+
+    top: 0px;
+    z-index: 0;
+    
+}
+
+.instanote__column {
+    display: flex;
+    z-index: 2;
+    margin: 20px;
+    flex-direction: column;
+    flex: 1;
+
+}
+
+.instanote__outerdiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 1.2rem;
+    flex-wrap: wrap;
+
+}
+
+.bp3-control.bp3-switch input ~ .bp3-control-indicator {
+  outline: 0;
+}
+.instanote__button {
+  border-width: 0px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  height: 30px;
+  background-color: #fbb844;
+  box-shadow: 9px 9px 28px -8px rgba(0,0,0,0.75);
+  margin: 2px 0px;
+}
+.instanote__button:hover {
+  cursor: pointer;
+  color: black;
+  background-color: white;
+}
+
+
+.color2 {
+  background-color: #fedda0;
+}
+.color3 {
+  background-color: #fff1d5;
+}
+
+.color2:hover {
+  background-color: white;
+}
+.color3:hover {
+  background-color: white;
+}
+
+.instanote__input {
+  
+margin-top: 20px;
+  display: flex;
+    height: 30px;
+    width: 100%;
+    padding-left: 10px;
+    margin-bottom: 2px;
+    box-shadow: 9px 9px 28px -8px rgba(0,0,0,0.75);
+    border-width: 0px;
+
+}
+
+.toast__div {
+  display: flex;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+.toast__button {
+  margin-left: 15px;
+  border-radius: 4px;
+  width: 45px;
+  height: 30px;
+  border: 0px;
+  color: red;
+  background-color: #f5c8c5;
+  transition: all 0.4ms linear;
+
+}
+
+.toast__button:hover {
+  color: white;
+}
+
+.instanote__form {
+    display: flex;
+    width: 100%;
+    min-width: 200px;
+    flex-direction: column;
+}
+.instanote__column__notes {
+    display: flex;
+    min-width: 300px;
+    z-index: 2;
+    margin: 20px;
+    flex-direction: column;
+    flex: 2;
+}
+
+/* css for Item.js */
+.black {
+    background: linear-gradient(to right, grey , black);
+    color: white;
+
+
+}
+
+.black:hover {
+  background: grey;
+  color: white;
+
+
+}
+.instanote__icon {
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+  justify-content: space-evenly;
+}
+
+.bp3-popover-target {
+  width: 100%;
+}
+
+.instanote__popover {
+  margin: 20px;
+  background-color: white;
+}
+
+.yellow {
+    background: linear-gradient(to right, #fff2d4 , #ffbc48);
+}
+.yellow:hover {
+  background: #ffbc48;
+  
+}
+
+/* css for List.js */
+
+/* css for NoteItem.js */
+
+/* css for NotesList.js */
+
+
+
+
+
+.item__garbage-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.instanote {
+    background-color: lightgrey;
+}
+
+.item__wrapper {
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 100%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin: 15px 0px;
+    flex-wrap: wrap;
+    cursor: pointer;
+    box-shadow: 9px 9px 28px -8px rgba(0,0,0,0.75);
+    font-size: 1.2rem;
+    font-family: 'ABeeZee', sans-serif;
+
+
+}
+
+.item__wrapper:hover {
+    cursor: pointer;
+}
+.item__wrapper:active {
+
+}
+.item__input {
+    display: flex;
+    flex-direction: row;
+}
+.input__button {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.icon__wrapper {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+
+}
+
+.icon__wrapper:hover {
+  background: white;
+  border-radius: 3px;
+}
+.input__deleteIcon {
+    width: 35px;
+    height: auto;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.instanote__loading-data{
+  margin-top: 100px;
+  z-index: 300;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+    align-items: center;
+}
+
+.input__doneIcon {
+    width: 35px;
+    height: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    
+}
+.TEST_INPUT_CONTAINER {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.TEST_INPUT {
+        background: rgba(255,255,255,0.4);
+        border: none;
+        position: relative;
+        width: 100%;
+        color: #333;
+
+        padding: 0px 10px;
+        margin: 0px 10px;
+        height: 100%;
+      ::-webkit-input-placeholder { color: #666;} 
+      :-moz-placeholder { color: #666; }
+      ::-moz-placeholder { color: #666; }
+      :-ms-input-placeholder { color: #666; }
+}
+
+
+.slide-in-top {
+	-webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-in-top {
+    0% {
+      -webkit-transform: translateY(-1000px);
+              transform: translateY(-1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-top {
+    0% {
+      -webkit-transform: translateY(-1000px);
+              transform: translateY(-1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+
+
+  /*
+    FOR NOTEITEM - WHICH IS A LIST
+  */
+
+  .noteitem__container {
+    width: 100%;
+}
+
+  .mylist__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 650px;
+    margin: 10px 20px;
+    height: auto;
+    padding: 10px 10px;
+    flex-wrap: wrap;
+    background: linear-gradient(to right, #fff2d4 , #ffbc48);
+    box-shadow: 9px 9px 18px -8px rgba(0,0,0,0.75);
+
+}
+
+.mylist__nameOfTheList {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 0px;
+    margin-right: 25px;
+}
+.mylist__date {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 25px;
+
+
+}
+.mylist__date--bold {
+    font-weight: bold;
+
+}
+
+.mylist__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 25px;
+
+
+}
+
+.mylist__goto {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mylist__goto--image {
+    height: 24px;
+    width: auto;
+    padding: 0 10px;
+    transition: all 0.05s linear;
+
+}
+.mylist__goto--image:hover {
+    height: 28px;
+    width: auto;
+
+}
+
+.toaster {
+    background-color: red;
+}
+
+
+.mylist__gotopage {
+    color: black;
+    width: 40px;
+}
+.mylist__goto:hover {
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 4px;
+    z-index: 300000;
+    cursor: pointer;
+}
+
+
+.mylist__toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+/*
+    GENERAL CSS
+*/
+.full_width {
+    width: 100%;
+}
+
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    height: 20px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 19px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: black;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 6px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 6px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 26px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 45px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(19px, 0);
+    }
+  }
+  

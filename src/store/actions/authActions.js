@@ -1,5 +1,7 @@
 export const signIn = (credentials) => {
+
     return (dispatch, getState, {getFirebase}) => {
+        dispatch({ type: 'USER_REQUEST', payload: true });
         const firebase = getFirebase();
 
         firebase.auth().signInWithEmailAndPassword(
@@ -25,6 +27,7 @@ export const signOut = () => {
 // getFirebase to sign up a database. firestore because of the data
 export const signUp = (newUser) => {
     return (dispatch, getState, {getFirebase, getFirestore}) => {
+        dispatch({ type: 'USER_REQUEST', payload: true });
         const firebase = getFirebase();
         const firestore = getFirestore();
         
@@ -34,7 +37,8 @@ export const signUp = (newUser) => {
             return firestore.collection('users').doc(resp.user.uid).set({
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
-                initials: newUser.firstName[0] + newUser.lastName[0]
+                initials: newUser.firstName[0] + newUser.lastName[0],
+                lists: []
             })
         }).then(() => {
             dispatch({ type: 'SIGNUP_SUCCESS' })

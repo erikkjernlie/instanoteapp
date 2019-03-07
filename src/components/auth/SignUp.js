@@ -3,13 +3,18 @@ import './style.css'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUp } from '../../store/actions/authActions'
+import { Spinner } from "@blueprintjs/core";
 
 export class SignUp extends Component {
+
+    componentDidMount() {
+    }
     state = {
         email: '',
         password: '',
         firstName: '',
-        lastName: ''
+        lastName: '',
+        lists: []
     }
     handleChange = (e) => {
         this.setState({
@@ -22,20 +27,21 @@ export class SignUp extends Component {
         this.props.signUp(this.state);
     }
     render() {
-        const { auth, authError } = this.props;
+        const { auth, authError, loadingUser } = this.props;
         if (auth.uid) {
             // returning redirect 
-            return <Redirect to='/create' />
+            return <Redirect to='/dashboard' />
         }
         return (
-            <div  className="login_wrapper">
-                <div className="login_container">
+            <div className="login_wrapper">
+                
+                <div className="signup_container">
                     <form className="login_form" onSubmit={this.handleSubmit}>
                         <div className="signup_title">Sign up</div>
                         <div className="signup_subtitle">for creating private lists</div>
                         <div className="login_component">
                             <label class="field a-field a-field_a1 page__field">
-                                <input class="field__input a-field__input" type="text" id="firstName" placeholder="first name" onChange={this.handleChange} required />
+                                <input class="field__input a-field__input" type="text" id="firstName" autoFocus placeholder="first name" onChange={this.handleChange} required autofocus />
                                 <span class="a-field__label-wrap">
                                     <span class="a-field__label">First name</span>
                                 </span>
@@ -54,7 +60,7 @@ export class SignUp extends Component {
                                 <span class="a-field__label-wrap">
                                     <span class="a-field__label">E-mail</span>
                                 </span>
-                            </label>  
+                            </label>
                             <label class="field a-field a-field_a3 page__field">
                                 <input class="field__input a-field__input" type="password" placeholder="password" id="password" onChange={this.handleChange} required />
                                 <span class="a-field__label-wrap">
@@ -66,19 +72,22 @@ export class SignUp extends Component {
                             <button className="btn">
                                 Sign up
                             </button>
-                            
-                        </div>
-                        <div>
-                                { authError ? <p>{ authError }</p> : null }
-                            </div>
-                    </form>
-                    </div>
 
-                    <div className="login_picture">
-                        <div className="login_title">INSTANOTE</div>
-                        <div className="login_item">Why sign up?</div>
-                        <div className="login_item">Make lists private</div>
-                    </div>
+                        </div>
+                        <div className="display__error">
+                            {(authError && !loadingUser) ? <p>{authError}</p> : null}
+                        </div>
+                        <div className="display__error">
+                            {loadingUser ? <Spinner intent="warning" /> : null}
+                        </div>
+                    </form>
+                </div>
+
+                <div className="login_picture">
+                    <div className="login_title">INSTANOTE</div>
+                    <div className="login_item">Why sign up?</div>
+                    <div className="login_item">Make lists private</div>
+                </div>
             </div>
         )
     }
@@ -87,7 +96,8 @@ export class SignUp extends Component {
 const mapStateToProps = (state) => {
     return {
         auth: state.firebase.auth,
-        authError: state.auth.authError
+        authError: state.auth.authError,
+            loadingUser: state.auth.loadingUser,
     }
 }
 

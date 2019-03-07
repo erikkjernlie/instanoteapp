@@ -1,4 +1,6 @@
-* { box-sizing: border-box }
+* {
+    box-sizing: border-box
+}
 
 a {
     color: white;
@@ -8,95 +10,235 @@ a:hover {
     color: #fbb844;
 }
 
-body {
-    background-color: #453838;
-}
+body {}
 
 .link_elements {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    font-family: 'Patrick Hand';
+    text-transform: uppercase;
+    font-size: 1.9rem;
+
 }
+
 .link_element {
     padding: 0 30px;
 }
 
-.initials {
-    text-transform: uppercase;
-}
 
 
 .navbar_elements {
+    position: absolute;
+    left: auto;
+    z-index: 100;
     width: 100%;
     display: flex;
-    height: 40px;
+    height: 50px;
     justify-content: space-between;
     color: white;
     align-items: center;
-    background-color: #453838;
     padding: 0px 30px;
-
+    margin: 0px 0px;
+    transition: all 0.3s linear;
 }
 
-.navbar_element {
+.navbar__links {
+    display: none;
+}
+
+.navbar__hamburger.active {
+    height: 100%;
+    right: 0px;
+    top: 0px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    width: 300px;
+    z-index: 300000;
+    position: fixed;
+    background-color: #453838;
+    box-shadow: 1px 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
+
+.inactive {
+    transition: all 0.3s linear;
+}
+
+.navbar__content {
+    transition: all 0.3s linear;
+    
+}
+
+.navbar__hamburger {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 50px;
+    bottom: 0px;
+    transition: all 0.3s linear;
+    
+
+}
+
+.navbar__showHamburger {
+    background-color: red;
+    
+    transition: all 0.3s linear;
+    z-index: 300000;
+}
+
+@media only screen and (min-width: 600px) {
+    .navbar__links {
+        display: flex;
+    }
+    .navbar__hamburger {
+        display: none;
+    }
+}
+
+.navbar_element {}
+
 .navbar2 {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.header {
-    position: relative;
-    height: 450px;
-    font-size: 7.3rem;
-    background-image: url('../../assets/header.png');
-    background-size: cover;
-
-}
-
-.header_image {
-    width: 100%;
-    height: auto;
-    position: relative;
-}
-
-.header_text {
-    position: relative;
-    z-index: 10;
-    color: white;
-    margin-left: 100px;
-    padding-top: 70px;
-    font-family: 'Patrick Hand', cursive;
-
-}
-
-.header_items {
-    border-left: 1px solid red;
-    border-color: #fab845;
-    padding-left: 20px;
-    font-size: 2.2rem;
-}
-
-.header_form {
-    font-size: 16px;
-    margin-left: 100px;
-    margin-top: 40px;
-    width: 450px;
-    display: flex;
-    flex-direction: row;
-    height: 50px;
-}
-
-.header_item {
-    font-family: 'Indie Flower', cursive;   
-}
-
-
-
 .orangeBtn {
     background-color: #fab845;
+}
+
+.popover__center {
+    display: flex;
+    justify-content: center;
+}
+
+.header__btn {
+    background-color: red;
+    font-size: 1.4rem !important;
+    height: 32px;
+    color: white !important;
+    padding: 0px 10px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.type h3 {
+    overflow: hidden;
+    /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange;
+    /* The typwriter cursor */
+    white-space: nowrap;
+    /* Keeps the content on a single line */
+    color: white;
+    font-family: 'Indie flower' !important;
+    font-size: 1.9rem !important;
+    color: white;
+    margin: 3 auto;
+    /* Gives that scrolling effect as the typing happens */
+    margin-bottom: 20px;
+    letter-spacing: .15em;
+    /* Adjust as needed */
+    animation: typing 2.1s steps(50, end), blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+    to {
+        width: 100%
+    }
+}
+
+/* The typewriter cursor effect */
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent
+    }
+    50% {
+        border-color: #fbb844;
+    }
+}
+
+.hamburger__item {
+    padding-top: 20px;
+    font-size: 2.5rem;
+    /*font-family: 'Patrick Hand' !important;*/
 
 }
+.hamburger__item:hover {
+    cursor: pointer;
+    color: #fbb844;
+
+}
+.hamburger__signin {
+    display: flex;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.75);
+}
+.show__popover {
+}
+.hamburger__signin__not {
+    display: none;
+}
+.hamburger__items { 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 20px;
+    text-transform: uppercase;
+}
+
+.div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    position: relative;
+  }
+  .ham {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 400ms;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 50px;
+  }
+  .hamRotate.active {
+    transform: rotate(45deg);
+  }
+  .hamRotate180.active {
+    transform: rotate(180deg);
+  }
+  .line {
+    fill:none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke:#fff;
+    stroke-width:5.5;
+    stroke-linecap:round;
+  }
+  
+  .ham4 .top {
+    stroke-dasharray: 40 121;
+  }
+  .ham4 .bottom {
+    stroke-dasharray: 40 121;
+  }
+  .ham4.active .top {
+    stroke-dashoffset: -68px;
+  }
+  .ham4.active .bottom {
+    stroke-dashoffset: -68px;
+  }
+  

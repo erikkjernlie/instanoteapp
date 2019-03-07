@@ -2,13 +2,18 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'
 import { Redirect } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
+import { Spinner } from "@blueprintjs/core";
 
 export class SignIn extends Component {
     state = {
         email: '',
         password: '',
         loading: false,
-        textSum: ''
+    }
+
+    componentDidMount() {
+
     }
 
 
@@ -18,52 +23,51 @@ export class SignIn extends Component {
         })
     }
     handleSubmit = (e) => {
+        console.log('PRESSED SUBMIT')
         e.preventDefault();
-        var texting = 'So cool. Damageplan was an American heavy metal supergroup from Dallas, Texas, formed in 2003. Following the demise of their previous group Pantera, brothers Dimebag Darrell and Vinnie Paul started a new band with bassist Bob Kakaha and vocalist Patrick Lachman, a guitarist formerly with Diesel Machine and Halford. They released their only studio album, New Found Power, in the United States on February 10, 2004; it debuted at number 38 on the Billboard 200. Later that year Damageplan was promoting the album at a concert at the Alrosa Villa in Columbus, Ohio, when a man climbed on stage, killed Darrell and three others, and wounded another seven before being fatally shot by a police officer. Some witnesses said that the assailant blamed the brothers for Pantera. why?';
-        var summarizer = require('nodejs-text-summarizer')
-        var text = summarizer(texting)
         this.setState({
             loading: true,
-            textSum: text
-          })
+        })
         this.props.signIn(this.state)
     }
     render() {
-        const { authError, auth } = this.props;
+        const { authError, auth, loadingUser } = this.props;
+        const { loading } = this.state;
         if (auth.uid) {
             // returning redirect 
-            return <Redirect to='/create' />
+            return <Redirect to='/dashboard' />
         }
-        const { loading, textSum } = this.state;
         return (
+
             <div className="login_container">
-                <form className="login_form" onSubmit={this.handleSubmit}>
-                
-                    <div className="signup_title">Sign in</div>
-
-                    <h3>{textSum}</h3>
-                    <div className="input_field">
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" placeholder="email" onChange={this.handleChange} />
+                <form onSubmit={this.handleSubmit}>
+                    <div className="login__title--popover">Sign in</div>
+                    <div className="login_component">
+                        <label className="field a-field a-field_a2 page__field margin__bottom">
+                            <input className="field__input a-field__input" type="email" id="email" autoFocus placeholder="email" onChange={this.handleChange} required />
+                            <span className="a-field__label-wrap">
+                                <span className="a-field__label">E-mail</span>
+                            </span>
+                        </label>
+                        <label className="field a-field a-field_a2 page__field margin__bottom">
+                            <input className="field__input a-field__input" type="password" placeholder="password" id="password" onChange={this.handleChange} required />
+                            <span className="a-field__label-wrap">
+                                <span className="a-field__label">Password</span>
+                            </span>
+                        </label>
                     </div>
-                    <div className="input_field">
-                        <label htmlFor="password">Passsword</label>
-                        <input type="password" placeholder="password" id="password" onChange={this.handleChange} />
-                    </div>
-                    <div className="input_field">
-                        <button className="btn">
+                    <div className="btn_container--fullwidth">
+                        <Button type="submit" className="btn--fullwidth">
                             Login
-                        </button>
-                        { loading && authError==null ? <div class="lds-facebook"><div></div><div></div><div></div></div> : null }
-
-                        <div>
-                            { authError ? <p>{authError}</p> : null }
-                        </div>
+                        </Button>
+                    </div>
+                    <div className="display__error">
+                        {(authError && !loadingUser) ? <p>{authError}</p> : null}
+                    </div>
+                    <div className="display__error">
+                        {loadingUser ? <Spinner intent="warning" /> : null}
                     </div>
                 </form>
-                <div className="login_picture">
-                hehe
-                </div>
 
             </div>
         )
@@ -74,7 +78,8 @@ const mapStateToProps = (state) => {
     return {
         // auth property in auth reducer
         authError: state.auth.authError,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        loadingUser: state.auth.loadingUser
     }
 }
 
@@ -85,4 +90,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 // first parameter is mapStateToProps
-export default connect(mapStateToProps, mapDispatchToProps )(SignIn)
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

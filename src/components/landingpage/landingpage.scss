@@ -1,0 +1,315 @@
+* {
+    box-sizing: border-box;
+  }
+
+/* LANDING PAGE */
+
+.landingpage__container {
+    height: calc(100vh-50px);
+        
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    
+    }
+    
+
+    
+    
+    .landingpage__wrapper {
+        position: fixed;
+        background-image: url('../../assets/instanote_background.jpg'); 
+        background-size: cover; 
+        height: 100vh;
+        width: 100vw;
+    
+        top: 0px;
+        z-index: 0;
+        
+    }
+
+
+/* HEADER CSS */ 
+.header {
+    position: relative;
+    font-size: 3.9rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    margin-top: 45px;
+    margin-bottom: 140px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+}
+
+.header__column1 {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+}
+
+.header__column2 {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ipad {
+    margin: 0px;
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    max-width: 500px;
+    min-width: 350px;
+}
+
+.header_image {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.header_text {
+    position: relative;
+    z-index: 10;
+    color: white;
+    margin-left: 40px;
+    padding-top: 70px;
+    font-family: 'Patrick Hand', cursive;
+    
+
+}
+
+.header__sectiontext {
+        font-size: 4rem;
+        margin-left: 100px;
+        margin-top: 40px;
+        padding-left: 7px;
+}
+
+.header__sectiontitle {
+    font-size: 4.2rem;
+    color: #fbb844;
+    margin-bottom: 5px;
+    font-family: 'Patrick Hand', cursive;
+    text-transform: uppercase;
+
+}
+
+.header__sectionsubtext {
+    color: white;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 2rem;
+
+}
+
+
+
+.header_items {
+    border-left: 1px solid red;
+    border-color: #fab845;
+    padding-left: 20px;
+    font-size: 2.5rem;
+}
+
+.header_form {
+    font-size: 16px;
+    margin-left: 40px;
+    margin-top: 40px;
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+}
+
+.header__loading {
+    margin-left: 40px;
+    font-size: 30px;
+}
+.header_item {
+    font-family: 'Indie Flower', cursive;   
+}
+
+.create_list__btn {
+    width: 130px;
+    height: 44px;
+    color: black !important;
+    padding: 0px 10px !important;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* LANDING PAGE CSS */ 
+
+
+.section1 {
+    margin-top: 100px;
+    height: auto;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-color: #453838;
+        padding-top: 80px;
+        padding-bottom: 100px;
+        font-family: 'ABeeZee', sans-serif;
+    z-index: 1000;
+
+
+
+}
+.section4 {
+    margin-top: 100px;
+    height: auto;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-color: #c06d2f;
+        padding-top: 80px;
+        padding-bottom: 100px;
+        font-family: 'ABeeZee', sans-serif;
+    z-index: 1000;
+
+
+
+}
+
+.section_imageslider {
+    display: none;
+    width: 100%;
+    background-color: #453838;
+    height: auto;
+    z-index: 3000;
+    margin-top: 50px;
+}
+
+
+
+.section2 {
+    height: auto;
+        display: flex;
+
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-color: #5e5554;
+        padding-top: 50px;
+        padding-bottom: 30px;   
+        font-family: 'ABeeZee', sans-serif;
+}
+
+.section3 {
+    width: 100%;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #453838;
+        font-family: 'ABeeZee', sans-serif;
+}
+
+.orangeBtn {
+    background-color: #fab845;
+
+}
+
+.step {
+    box-shadow: 5px 5px 14px -4px rgba(0,0,0,0.75); width: 90%; max-width: 380px; height: auto; margin: 10px;
+}
+
+.steps {
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+}
+
+.steps__image__slider {
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+}
+
+
+
+
+.title {
+    color: #fbb844;
+    font-size: 4.5rem;
+    margin-left: 10px;
+    margin-bottom: 30px;
+    font-family: 'Patrick Hand', cursive;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.project_form {
+    display: flex;
+    flex-direction: row;
+}
+
+.subtext {
+    display: flex;
+        max-width: 600px;
+        margin-bottom: 40px;
+        color: white;
+        border-left: 1px solid #fbb844;
+        padding-left: 7px;
+}
+
+.inp {
+    width: 80%;
+        height: 30px;
+        border: 0px;
+        padding-left: 8px;
+    box-shadow: 9px 9px 28px -8px rgba(0,0,0,0.75);
+}
+
+.contact-text {
+    margin-left: 10px;
+        margin-right: 10px;
+        max-width: 500px;
+}
+
+.contact-instanote {
+    color: white;
+    margin-bottom: 30px;
+    border-left: 1px solid #fbb844;
+    padding-left: 7px;
+    margin-bottom: 10px;
+}
+
+.contact-space {
+    margin-bottom: 10px; color: white; text-align: center
+}
+
+
+@media only screen and (min-width: 1000px) {
+    .section_imageslider {
+        display: flex;
+    }
+
+    .steps__image__slider {
+        display: none;
+    }
+}

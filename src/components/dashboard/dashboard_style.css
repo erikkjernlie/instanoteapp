@@ -1,7 +1,134 @@
 .dashboard_row {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
     width: 100%;
-    background-color: blue;
+    z-index: 100;
+    flex: 1;
+    justify-content: center;
+}
+
+.dashboard__container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    z-index: 5;
+}
+.nodata {
+    margin: 50px 0;
+    color: #fbb844;
+    font-size: 1.8rem;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #453838;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.nodata__fail {
+    color: white;
+    font-size: 1.4rem;
+    text-align: center;
+
+
+}
+
+
+.render_notes {
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(to right, #fff2d4 , #ffbc48);
+    width: 100%;
+
+}
+
+.dashboard {
+    height: calc(100vh-50px);
+    z-index: 1;
+        
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+}
+
+.dashboard_newlist {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.dashboard__maxwidth {
+    max-width: 600px;
+
+
+}
+
+.mylists {
+    margin-top: 50px;
+    border-top: 1px solid white;
+    padding-top: 30px;
+}
+
+.spinner__loading {
+    margin-top: 40px;
+}
+
+.dashboard_input_field {
+    bottom: 0px;
+    color: rgb(85, 85, 85);
+    left: 0px;
+    position: relative;
+    right: 0px;
+    text-decoration: none solid rgb(85, 85, 85);
+    text-size-adjust: 100%;
+    top: 0px;
+    width: 242px;
+    column-rule-color: rgb(85, 85, 85);
+    perspective-origin: 121px 21.7969px;
+    transform-origin: 121px 21.7969px;
+    caret-color: rgb(85, 85, 85);
+    border: 1px solid grey;
+    border-radius: 4px 4px 4px 4px;
+    font: normal normal 400 normal 14.4px / 16px Roboto, "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+    margin: 0px 10px 0px 0px;
+    outline: rgb(85, 85, 85) none 0px;
+    padding: 12.8px 10px;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}/*#INPUT_1*/
+
+.dashboard_input_field:after {
+    color: rgb(85, 85, 85);
+    text-decoration: none solid rgb(85, 85, 85);
+    text-size-adjust: 100%;
+    column-rule-color: rgb(85, 85, 85);
+    caret-color: rgb(85, 85, 85);
+    border: 0px none rgb(85, 85, 85);
+    font: normal normal 400 normal 14.4px / 16px Roboto, "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+    outline: rgb(85, 85, 85) none 0px;
+}/*#INPUT_1:after*/
+
+.dashboard_input_field:before {
+    color: rgb(85, 85, 85);
+    text-decoration: none solid rgb(85, 85, 85);
+    text-size-adjust: 100%;
+    column-rule-color: rgb(85, 85, 85);
+    caret-color: rgb(85, 85, 85);
+    border: 0px none rgb(85, 85, 85);
+    font: normal normal 400 normal 14.4px / 16px Roboto, "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+    outline: rgb(85, 85, 85) none 0px;
+}/*#INPUT_1:before*/
+
+.initials {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    font-family: 'Patrick Hand', cursive;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px 0px;
+    text-align: center;
+    z-index: 5;
+    color: white;
 }
