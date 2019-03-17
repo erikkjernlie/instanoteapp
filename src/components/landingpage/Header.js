@@ -22,7 +22,7 @@ export class Header extends Component {
             [e.target.id]: e.target.value,
             loading: false
         });
-        this.props.getLists();
+        // this.props.getLists(); THIS ONE NEEDS TO BE COMMMENTED OUT RIGHT????
     }
 
     handleSubmit = (e) => {
@@ -63,12 +63,12 @@ export class Header extends Component {
                         </div>
                         <div className="header_form">
                             <form onSubmit={this.handleSubmit} className="project_form">
-                                <div>
-                                    <input className="input_field" type="text" id="listName" placeholder="listName" onChange={this.handleChange} autoFocus />
+                                <div className="header__input">
+                                    <input className="input_field__header" type="text" id="listName" placeholder="listName" onChange={this.handleChange} autoFocus />
                                 </div>
 
-                                <div>
-                                    <Button type="submit" className="create_list__btn">
+                                <div className="header__button">
+                                    <Button type="submit" className="create_list__btn__header">
                                         Create list
                                     </Button>
                                 </div>

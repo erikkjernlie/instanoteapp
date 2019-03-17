@@ -30,6 +30,7 @@ export const signUp = (newUser) => {
         dispatch({ type: 'USER_REQUEST', payload: true });
         const firebase = getFirebase();
         const firestore = getFirestore();
+        console.log("SIGNING UP!!!!!")
         
         firebase.auth().createUserWithEmailAndPassword(
             newUser.email, newUser.password

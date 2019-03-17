@@ -54,6 +54,7 @@ class Dashboard extends Component {
         e.preventDefault();
         // MAKE SURE LISTS IT NOT EMPTY WHEN TRYING TO CREATE
         this.props.createList(this.state)
+        console.log("CREATING LIST!!!")
         // add to the list here
         //this.props.history.push('/');
         // console.log(this.state);
@@ -61,10 +62,10 @@ class Dashboard extends Component {
     render() {
         // console.log(this.props)
         const { lists, auth, profile, listError, data_list, errorMessage, isFetching } = this.props; // object
-        console.log("dashboard", data_list, new Date())
+        // console.log("dashboard", data_list, new Date())
         // THIS IS WHAT THE FUCK
 
-        console.log(profile)
+        // console.log(profile)
 
         if (!auth.uid) {
             return <Redirect to='/' />

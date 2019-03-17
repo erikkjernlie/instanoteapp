@@ -4,7 +4,8 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUp } from '../../store/actions/authActions'
 import { Spinner } from "@blueprintjs/core";
-
+import user2 from '../../assets/images/user_2.png'
+import user3 from '../../assets/images/user_3.png'
 export class SignUp extends Component {
 
     componentDidMount() {
@@ -34,7 +35,7 @@ export class SignUp extends Component {
         }
         return (
             <div className="login_wrapper">
-                
+
                 <div className="signup_container">
                     <form className="login_form" onSubmit={this.handleSubmit}>
                         <div className="signup_title">Sign up</div>
@@ -86,7 +87,14 @@ export class SignUp extends Component {
                 <div className="login_picture">
                     <div className="login_title">INSTANOTE</div>
                     <div className="login_item">Why sign up?</div>
-                    <div className="login_item">Make lists private</div>
+
+
+                    <div className="users_signup">
+
+                        <img src={user2} className="small_user_signup" alt="wishing list" />
+                        <img src={user3} className="small_user_signup" alt="wishing list" />
+
+                    </div>
                 </div>
             </div>
         )
@@ -97,7 +105,7 @@ const mapStateToProps = (state) => {
     return {
         auth: state.firebase.auth,
         authError: state.auth.authError,
-            loadingUser: state.auth.loadingUser,
+        loadingUser: state.auth.loadingUser,
     }
 }
 

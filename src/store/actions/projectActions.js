@@ -23,11 +23,47 @@ export const createProject = (project) => {
     }
 };
 
+
+export const setPassword = (password, urlName) => {
+        console.log(password, urlName)
+
+return (dispatch, getState, { getFirebase, getFirestore }) => {
+        // make async call to database
+        const firestore = getFirestore(); // reference to firestore
+        const profile = getState().firebase.profile;
+        // in case not logged in
+        const usersRef = firestore.collection('lists').doc(urlName).update({
+            password: password
+        }).then(() => {
+            dispatch({ type: 'UPDATED_PASSWORD_SUCCESS'})
+        }).catch((err) => {
+                    dispatch({ type: 'UPDATED_PASSWORD_FAIL', err });
+                    });
+
+       
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const getListsWithInformation = () => {
 
     // DISPATCH ACTION - load everything here
     // 1. jeg henter ting. 2. Det er ferdig hentet. 3. det faila
-    console.log("getListsWithInformation", new Date());
 
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         dispatch({ type: 'FETCH_USER_DATA_REQUEST' });
@@ -41,7 +77,6 @@ export const getListsWithInformation = () => {
             docRef.get().then(function (doc) {
                 if (doc.exists) {
                     lists = doc.data().lists;
-                    console.log("getListsWithInformation: lists", lists);
                     for (let i = 0; i < lists.length; i++) {
                         let list = lists[i];
 
@@ -49,7 +84,6 @@ export const getListsWithInformation = () => {
                             if (doc.exists) {
 
                                 let listData = doc.data();
-                                console.log(new Date(), i, listData, lists)
 
                                 data_list.push(listData);
                                 if (i === (lists.length - 1)) {
@@ -130,13 +164,12 @@ export const createList = (list) => {
     // returning a function, dispatch en action
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         // make async call to database
-
         const firestore = getFirestore(); // reference to firestore
         const profile = getState().firebase.profile;
         // in case not logged in
         if (getState().firebase.profile.isEmpty) {
             const usersRef = firestore.collection('lists').doc(list.listName);
-
+            console.log("USER IS NOT LOGGED IN")
             usersRef.get()
                 .then((docSnapshot) => {
                     if (docSnapshot.exists) {
@@ -155,8 +188,16 @@ export const createList = (list) => {
                             madeBy: null,
                             public: true,
                             createdOn: new Date(),
+                            password: "",
                         }).then(() => {
-                            dispatch({ type: 'CREATE_LIST', list: list });
+                            firestore.collection('lists').doc(list.listName).collection('messages').doc().set({
+                                createdBy: 'Instanote',
+                                time: new Date(),
+                                message: 'Chat here',
+                                uid: null,
+                            }).then(() => {
+                                dispatch({ type: 'CREATE_LIST', list: list });
+                            });
                             window.location.replace(list.listName)
                         }).catch((err) => {
                             dispatch({ type: 'CREATE_LIST_ERROR', err });
@@ -169,6 +210,13 @@ export const createList = (list) => {
             let goals = ['My first goal', 'My second goal - tap me to remove me'];
             let deleted = ['My first recover'];
             const usersRef = firestore.collection('lists').doc(list.listName);
+            console.log("USER IS LOGGED IN, GETS IN HERERE REI")
+            console.log("USER IS LOGGED IN, GETS IN HERERE REI")
+            console.log("USER IS LOGGED IN, GETS IN HERERE REI")
+            console.log("USER IS LOGGED IN, GETS IN HERERE REI")
+            console.log("USER IS LOGGED IN, GETS IN HERERE REI")
+            console.log("USER IS LOGGED IN, GETS IN HERERE REI")
+
 
             usersRef.get()
                 .then((docSnapshot) => {
@@ -182,6 +230,7 @@ export const createList = (list) => {
                         console.log("list does not exists")
 
                         const authorId = getState().firebase.auth.uid;
+                        console.log(getState())
                         firestore.collection('lists').doc(list.listName).set({
                             name: list.listName,
                             goals: goals,
@@ -189,30 +238,45 @@ export const createList = (list) => {
                             madeBy: authorId,
                             public: true,
                             createdOn: new Date(),
+                            password: "",
                         }).then(() => {
-                            var docRef = firestore.collection('users').doc(authorId);
-                            docRef.get().then(function (doc) {
+                            firestore.collection('lists').doc(list.listName).collection('messages').doc().set({
+                                createdBy: 'Instanote',
+                                time: new Date(),
+                                message: 'Chat here',
+                                uid: null
+                            }).then(() => {
+                                var docRef = firestore.collection('users').doc(authorId);
+                                docRef.get().then(function (doc) {
 
-                                if (doc.exists) {
-                                    // could have just set newList = doc.data().lists but tried to see if there was some mutant problems
-                                    let newList = []
-                                    for (let j = 0; j < doc.data().lists.length; j++) {
-                                        newList.push(doc.data().lists[j])
+                                    if (doc.exists) {
+                                        console.log("00000000000000000000")
+                                        // could have just set newList = doc.data().lists but tried to see if there was some mutant problems
+                                        let newList = []
+                                        for (let j = 0; j < doc.data().lists.length; j++) {
+                                            newList.push(doc.data().lists[j])
+                                        }
+                                        newList.push(list.listName);
+                                        firestore.collection('users').doc(authorId).update({
+                                            lists: newList
+                                        });
+                                        dispatch({ type: 'CREATE_LIST', list: list });
+
+                                    } else {
+                                        console.log("111111111111111")
+
+                                        // doc.data() will be undefined in this case
+                                        console.log("No such document!");
                                     }
-                                    newList.push(list.listName);
-                                    firestore.collection('users').doc(authorId).update({
-                                        lists: newList
-                                    });
                                     dispatch({ type: 'CREATE_LIST', list: list });
+                                });
 
-                                } else {
-                                    // doc.data() will be undefined in this case
-                                    console.log("No such document!");
-                                }
+                            }).then(() => {
+                                window.location.replace(list.listName)
+
                             }).catch(function (error) {
                                 console.log("Error getting document:", error);
                             });
-                            window.location.replace(list.listName)
 
                         }).catch((err) => {
                             dispatch({ type: 'CREATE_LIST_ERROR', err });

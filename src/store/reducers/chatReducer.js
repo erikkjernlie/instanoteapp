@@ -1,5 +1,6 @@
 const initState = {
     data: {},
+    messages: [],
    
 }
 
@@ -19,6 +20,7 @@ const chatReducer = (state = initState, action) => {
                 
             }
         case 'JOIN_CHAT_SUCCESS':
+            console.log("REDUCER", action.payload, state)
             return {
                 ...state,
                 requestingChat: true,
@@ -30,6 +32,11 @@ const chatReducer = (state = initState, action) => {
                 ...state,
                 requestingAddMessage: true,
                 addMessageFailureMessage: '',
+            }
+        case 'NEW_MESSAGE':
+            return {
+                ...state,
+                newMessage: action.payload
             }
         case 'ADD_MESSAGE_FAILURE':
             return {

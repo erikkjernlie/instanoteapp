@@ -145,6 +145,18 @@ const projectReducer = (state = initState, action) => {
                 ...state,
                 listData: action.payload
             }
+        case 'UPDATED_PASSWORD_SUCCESS':
+            return {
+                ...state,
+                errorMessage: '',
+                isFetchingPassword: false,
+            }
+        case 'UPDATED_PASSWORD_FAIL':
+            return {
+                ...state,
+                errorMessage: action.err,
+                isFetchingPassword: false,
+            }
 
         default:
             return state;

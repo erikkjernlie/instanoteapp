@@ -5,6 +5,11 @@ import ImageSlider from './ImageSlider';
 import step1 from '../../assets/images/step1.jpg'
 import step2 from '../../assets/images/step2.jpg'
 import step3 from '../../assets/images/step3.jpg'
+import user from '../../assets/images/user.png'
+import user1 from '../../assets/images/user_1.png'
+import user2 from '../../assets/images/user_2.png'
+import user3 from '../../assets/images/user_3.png'
+
 import what_personal from '../../assets/images/what_personal.jpg'
 import what_shopping from '../../assets/images/what_shopping.jpg'
 import what_wishinglist from '../../assets/images/what_wishinglist.jpg'
@@ -88,9 +93,15 @@ class Landingpage extends Component {
                 <div className="section4">
                     <Fade bottom>
 
-                        <div className="title">Do I need to create a user</div>
+                        <div className="title">Do I need to create a user?</div>
 
-                        <div className="subtext">No only uf you</div>
+                        <img src={user} className="user" alt="wishing list" />
+                        <div className="users">
+                            <img src={user1} className="small_user" alt="wishing list" />
+                            <img src={user2} className="small_user" alt="wishing list" />
+                            <img src={user3} className="small_user" alt="wishing list" />
+
+                        </div>
                     </Fade>
 
                 </div>

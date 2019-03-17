@@ -1,7 +1,122 @@
+/*
+COLORS:
+
+Brown: 453838
+Yellow: fbb844
+
+*/
+
+
 * {
     box-sizing: border-box;
   }
 /* css for Instanote.js */
+
+
+.message {
+  width: 100%;
+  background-color: white;
+  background: linear-gradient(to right, #f0d6a9 , #f0d6a9);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: black;
+  padding: 5px;
+  margin-top: 1px;
+  border-radius: 5px;
+}
+
+.message__container {
+  margin: 5px 0px;
+  color: #fff1d5;
+}
+
+#message_date {
+  display: none;
+}
+
+
+
+.message__container:active #message_date{
+  display: block;
+}
+
+.message_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.createdby_me {
+   display: flex;
+   padding: 0 5px;
+   flex-direction: row-reverse;
+
+  justify-content: space-between;
+}
+.createdby {
+   padding: 0 5px;
+
+   display: flex;
+  justify-content: space-between;
+}
+.message__div {
+  width: 100%;
+  transition: all 0.3s linear;
+}
+
+.add_note_div_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  padding-left: 10px;
+  transition: all 0.3s linear;
+
+}
+
+
+
+.add_note_img {
+  height: 25px;
+  width: 25px;
+
+}
+
+.add_note_img:hover {
+   height: 28px;
+  width: 28px;
+  margin-right: -2px;
+
+
+}
+
+.message_me {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  color: black;
+  padding: 5px;
+  margin-top: 1px;
+  border-radius: 5px;
+  justify-content: space-between;
+
+}
+
+.message_me:active {
+  background-color: grey;
+}
+
+.here {
+  z-index: 1000000;
+  font-size: 100px;
+}
+.drawer {
+  z-index: 100000;
+  font-size: 100px;
+
+}
+
 
 
 .instanote__container {
@@ -46,7 +161,18 @@ height: calc(100vh-50px);
 
 }
 
+.instanote__send-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: auto;
 
+  margin-left: 8px;
+
+  
+
+}
 
 
 
@@ -113,6 +239,44 @@ height: calc(100vh-50px);
   background-color: white;
 }
 
+.instanote__button_noteitem {
+  border-width: 0px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  height: 30px;
+  background-color: #fbb844;
+  box-shadow: 5px 5px 10px -4px rgba(0,0,0,0.75);
+  margin: 2px 0px;
+  width: 100%;
+
+}
+.instanote__button_noteitem:hover {
+  cursor: pointer;
+  color: black;
+  background-color: white;
+}
+
+
+.instanote__button__message {
+  border-width: 0px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  padding-right: 5px;
+  height: 32px;
+  background-color: white;
+  box-shadow: 9px 9px 28px -8px rgba(0,0,0,0.75);
+  margin: 2px 0px;
+}
+.instanote__button__message:hover {
+  cursor: pointer;
+  color: black;
+  background-color: #fbb844;
+}
+
 
 .color2 {
   background-color: #fedda0;
@@ -128,6 +292,16 @@ height: calc(100vh-50px);
   background-color: white;
 }
 
+.color4 {
+  background-color: #fef8ee;
+
+}
+
+.color4:hover {
+  background-color: white;
+}
+
+
 .instanote__input {
   
 margin-top: 20px;
@@ -140,6 +314,18 @@ margin-top: 20px;
     border-width: 0px;
 
 }
+
+.instanote__input__message {
+  
+    display: flex;
+      width: 100%;
+      padding-left: 10px;
+      margin-bottom: 2px;
+      margin-top: 2px;
+      box-shadow: 9px 9px 28px -8px rgba(0,0,0,0.75);
+      border-width: 0px;
+  
+  }
 
 .toast__div {
   display: flex;
@@ -176,6 +362,110 @@ margin-top: 20px;
     margin: 20px;
     flex-direction: column;
     flex: 2;
+}
+
+.instanote__column__chat {
+  display: flex;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  // box-shadow: 9px 9px 28px -8px rgba(0,0,0,0.75);
+  z-index: 2;
+  // margin: 20px;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px;
+  height: 350px;
+  margin-top: 35px;
+  background-color: #312525;
+  border-radius: 5px;
+  /*
+  margin-right: 20px;
+  background-color: #453838;
+  Æ/
+
+
+
+
+  /*background: linear-gradient(to right, #f0d6a9 , #f0d6a9);*/
+  //border-radius: 5px;
+  color: white;
+
+}
+
+.welcome_chat {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: white;
+
+}
+
+.welcome_more {
+width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #fbb844;
+
+}
+
+.welcome_more:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.bp3-icon {
+  color: black; 
+  margin-left: 10px;
+}
+
+
+
+.bp3-overlay-content {
+  background-color: #453838 !important;
+  font-size: 12px;
+    font-family: 'ABeeZee', sans-serif;
+  color: white;
+
+}
+
+.bp3-heading {
+  color: #fbb844;
+}
+
+.bp3-drawer-header .bp3-icon-large, .bp3-drawer-header .bp3-icon {
+  color: white;
+
+}
+
+.instanote__column__chat__div {
+  height: 100%;
+  color: black;
+
+}
+
+.instanote__type__messages {
+  
+  display: flex;
+    width: 100%;
+    flex-direction: row;
+    height: 36px;
+  
+
+}
+
+.message_form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.instanote__messages {
+  width: 100%;
+  height: calc(100% - 36px);
+  overflow: auto;
+  scroll-behavior: smooth;
 }
 
 /* css for Item.js */
@@ -328,6 +618,21 @@ margin-top: 20px;
       :-ms-input-placeholder { color: #666; }
 }
 
+.TEST_INPUT {
+  background: rgba(255,255,255,0.4);
+  border: none;
+  position: relative;
+  width: 100%;
+  color: #333;
+
+  padding: 0px 10px;
+  margin: 0px 10px;
+::-webkit-input-placeholder { color: #666;} 
+:-moz-placeholder { color: #666; }
+::-moz-placeholder { color: #666; }
+:-ms-input-placeholder { color: #666; }
+}
+
 
 .slide-in-top {
 	-webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -373,6 +678,43 @@ margin-top: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.mylist__password-column1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+.mylist__password__column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  padding: 0 20px;
+
+  
+}
+
+
+.mylist__password {
+  width: 100%;
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid black;
+}
+
+.mylist__outercontainer {
+  display: flex;
+    flex-direction: column;
+    transition: all 0.5s linear;
     max-width: 650px;
     margin: 10px 20px;
     height: auto;
@@ -380,7 +722,6 @@ margin-top: 20px;
     flex-wrap: wrap;
     background: linear-gradient(to right, #fff2d4 , #ffbc48);
     box-shadow: 9px 9px 18px -8px rgba(0,0,0,0.75);
-
 }
 
 .mylist__nameOfTheList {
@@ -523,3 +864,91 @@ margin-top: 20px;
     }
   }
   
+
+  .handle__password__form {
+        font-family: 'ABeeZee', sans-serif;
+    font-size: 1.2rem;
+    color: black;
+    display: flex;
+    margin-top: 20px;
+  }
+
+ .password__container {
+   background-color: #453838;
+   border-radius: 5px;
+   padding: 20px;
+ }
+
+ .password__warningText {
+    font-size: 2rem;
+    color: #fbb844;
+
+ }
+ .password__errorText {
+   width: 100%;
+   display: flex; 
+   justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-top: 15px;
+
+ }
+
+
+ .password__input {
+  
+    display: flex;
+    flex: 1;
+      height: 32px;
+      padding-left: 10px;
+      margin-bottom: 2px;
+      margin-top: 2px;
+      box-shadow: 9px 9px 28px -8px rgba(0,0,0,0.75);
+      border-width: 0px;
+  
+  }
+
+  .password__button {
+    flex: 1;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  height: 32px;
+  background-color: #fbb844;
+  box-shadow: 9px 9px 28px -8px rgba(0,0,0,0.75);
+  margin: 2px 0px;
+}
+.password__button:hover {
+  cursor: pointer;
+  color: black;
+  background-color: white;
+}
+
+
+
+.instanote__setpassword{
+  border-width: 0px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  height: 30px;
+  border-radius: 4px;
+  background-color: #fff1d5;
+  margin: 2px 0px;
+  width: 100%;
+
+}
+
+.TEST_INPUT_2 {
+  background-color: white;
+  border-radius: 3px;
+  padding: 5px;
+  color: black;
+}
+.instanote__setpassword:hover {
+  cursor: pointer;
+  color: black;
+  background-color: white;
+}

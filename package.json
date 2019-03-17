@@ -1,12 +1,13 @@
 {
   "name": "instanoteapp",
+  "homepage": "https://instanoteapp.firebaseapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^3.13.0",
     "antd": "^3.13.5",
-    "bootstrap": "^4.2.1",
     "firebase": "^5.8.1",
+    "firebase-tools": "^6.5.0",
     "install": "^0.12.2",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
@@ -44,5 +45,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "bootstrap": "^4.3.1"
+  }
 }
