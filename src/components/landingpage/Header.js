@@ -15,12 +15,14 @@ export class Header extends Component {
     state = {
         listName: '',
         date: new Date(),
-        loading: false
+        loading: false,
+        errorMessage: '',
     }
     handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value,
-            loading: false
+            loading: false,
+            errorMessage: '',
         });
         // this.props.getLists(); THIS ONE NEEDS TO BE COMMMENTED OUT RIGHT????
     }
@@ -29,11 +31,22 @@ export class Header extends Component {
         e.preventDefault();
         // MAKE SURE LISTS IT NOT EMPTY WHEN TRYING TO CREATE
         if (this.state.listName !== "") {
+            if (this.state.listName.indexOf(" ") > 0 ) {
+ this.setState({
+                errorMessage: 'List name cannot contain space.'
+            })
+            } else if (this.state.listName.toLowerCase() === 'dashboard' || this.state.listName.toLowerCase() === 'signin' || this.state.listName.toLowerCase() === 'signup') {
+                 this.setState({
+                errorMessage: 'Invalid name.'
+            })
+            }else {
             this.setState({
                 loading: true
             })
             this.props.createList(this.state);
-
+            }
+            
+            
         }
         // add to the list here
         // console.log(this.state);
@@ -72,8 +85,11 @@ export class Header extends Component {
                                         Create list
                                     </Button>
                                 </div>
+
                             </form>
                         </div>
+                        <div className="header_error_div">{this.state.errorMessage ? <div className="header_error">{this.state.errorMessage}</div>  : <div></div>}</div>
+
                         
                         <div className="header__loading">
                             <div className="subtext">

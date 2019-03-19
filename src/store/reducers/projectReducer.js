@@ -157,7 +157,13 @@ const projectReducer = (state = initState, action) => {
                 errorMessage: action.err,
                 isFetchingPassword: false,
             }
+        case 'FETCH_USER_DATA_EMPTY_SUCCESS':
+            return {
+                ...state,
+                noData: 'You have no data',
+                isFetching: false,
 
+            }
         default:
             return state;
     }

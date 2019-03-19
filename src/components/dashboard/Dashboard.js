@@ -66,7 +66,7 @@ class Dashboard extends Component {
         // THIS IS WHAT THE FUCK
 
         // console.log(profile)
-
+        console.log("THIS.PROPS.noData", this.props.gotNoData)
         if (!auth.uid) {
             return <Redirect to='/' />
         }
@@ -113,7 +113,7 @@ class Dashboard extends Component {
                     <div className="dashboard_row">
                         {(isFetching && !this.state.loading) ? <div className="spinner__loading"><Spinner intent="warning" /> </div>: <div></div>}
 
-                        {this.state.loading ? <div className="spinner__loading"><Spinner intent="warning" /></div> :
+                        {(this.state.loading)? <div className="spinner__loading"><Spinner intent="warning" /></div> :
                             <div>{(data_list) ? <div className="mylists">{data_list.map(
                                 d => {
                                     return (
@@ -127,7 +127,7 @@ class Dashboard extends Component {
 
                     </div>
                     <div className="dashboard_row">
-                        {this.state.noData && isFetching ? <div className="nodata"><div>It looks like you do not have any data.</div><div className="nodata__fail">If you have created any lists, we recommend you to update the page. </div></div> : <div></div>}
+                        {(this.props.gotNoData === 'You have no data')  ? <div className="nodata"><div>It looks like you do not have any data.</div><div className="nodata__fail">If you have created any lists, we recommend you to update the page. </div></div> : <div></div>}
                     </div>
                 </div>
                 <ToastContainer />
@@ -146,6 +146,7 @@ const mapStateToProps = (state) => {
         isFetching: state.project.isFetching,
         errorMessage: state.project.errorMessage,
         data_list: state.project.data_list,
+        gotNoData: state.project.noData,
 
     }
 }

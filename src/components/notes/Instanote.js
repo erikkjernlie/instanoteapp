@@ -68,6 +68,7 @@ class Instanote extends Component {
         password: '',
         correctPassword: false,
         passwordMessage: '',
+        
 
     }
 
@@ -489,7 +490,7 @@ class Instanote extends Component {
 
                                     <input className="password__input" type="text" id="password" value={this.state.password} placeholder="Write a message..." onChange={this.handleChange} />
                                     <div onClick={this.handlePassword} className="password__button">
-                                        Change password
+                                        Enter password
 
 
 

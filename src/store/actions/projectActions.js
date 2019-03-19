@@ -77,6 +77,9 @@ export const getListsWithInformation = () => {
             docRef.get().then(function (doc) {
                 if (doc.exists) {
                     lists = doc.data().lists;
+                    if (lists.length === 0) {
+                    dispatch({ type: 'FETCH_USER_DATA_EMPTY_SUCCESS' })
+                    }
                     for (let i = 0; i < lists.length; i++) {
                         let list = lists[i];
 
@@ -84,10 +87,11 @@ export const getListsWithInformation = () => {
                             if (doc.exists) {
 
                                 let listData = doc.data();
-
+                                
                                 data_list.push(listData);
                                 if (i === (lists.length - 1)) {
                                     dispatch({ type: 'FETCH_USER_DATA_SUCCESS', data_list })
+                                    
                                 }
                             } else {
                                 console.log("Document: No such document!");
@@ -99,6 +103,7 @@ export const getListsWithInformation = () => {
                 }
             }).catch(function (error) {
             }).then(() => {
+                
 
             });
         }

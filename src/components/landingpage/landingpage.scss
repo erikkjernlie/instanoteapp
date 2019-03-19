@@ -23,6 +23,12 @@
 
 /* HEADER CSS */
 
+.header__error {
+    font-size: 1.2rem;
+    color: white;
+    background: blue;
+}
+
 .header {
     position: relative;
     font-size: 3.9rem;
@@ -35,6 +41,8 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+
 
 .header__column1 {
     display: flex;
@@ -74,6 +82,24 @@
     font-family: 'Patrick Hand', cursive;
 }
 
+.header_error {
+    position: relative;
+    z-index: 10;
+    color: white;
+    margin-left: 40px;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+
+
+.header_error_div {
+    display: flex;
+    justify-content: flex-start;
+    
+}
 .header__sectiontext {
     font-size: 4rem;
     margin-left: 100px;
@@ -164,6 +190,8 @@
     padding-left: 30px;
     padding-right: 30px;
 }
+
+
 
 .section4 {
     margin-top: 100px;

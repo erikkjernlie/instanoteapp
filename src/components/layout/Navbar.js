@@ -8,6 +8,7 @@ import SignIn from '../auth/SignIn'
 import { signOut } from '../../store/actions/authActions'
 import { Intent, Popover, PopoverInteractionKind, Position } from "@blueprintjs/core";
 
+import instanote from '../../assets/instanote.png'
 
 
 
@@ -37,9 +38,18 @@ class Navbar extends Component {
         instaChat: false,
     }
     viewHamburger = () => {
+        if (this.state.hamburger) {
+            if (this.state.login) {
+                this.setState({
+                    login: !this.state.login,
+                })
+            }
+        }
         this.setState({
             hamburger: !this.state.hamburger,
         })
+
+
     }
 
     viewLogin = () => {
@@ -58,6 +68,7 @@ class Navbar extends Component {
                 <div className="navbar__links">
                     {links}
                 </div>
+
                 {this.props.auth.uid ?
                     <div className={"navbar__hamburger" + (this.state.hamburger ? " active" : " inactive")}>
                         <div className="div" onClick={this.viewHamburger}>
@@ -75,8 +86,22 @@ class Navbar extends Component {
 
                         </div>
                         <div className="navbar__content">
-                            {this.state.hamburger ? <div className="hamburger__items">
+                            {this.state.hamburger ?
+                                <img src={instanote} className="instanote__hamburger" alt="instanote" />
+                                : null
 
+                            }
+
+
+
+                            {this.state.hamburger ?
+
+
+                                <div class="bp3-input-group .modifier">
+                                    <span class="bp3-icon bp3-icon-search"></span>
+                                    <input class="bp3-input" type="search" placeholder="Search instanote" dir="auto" />
+                                </div> : null}
+                            {this.state.hamburger ? <div className="hamburger__items">
 
                                 <div className="hamburger__item"><a href="dashboard">Your lists</a></div>
                                 <div className="hamburger__item"><a onClick={this.props.signOut}>Sign out</a></div>
@@ -103,15 +128,36 @@ class Navbar extends Component {
 
                         </div>
                         <div className="navbar__content">
-                            {this.state.hamburger ? <div className="hamburger__items">
-                                <div className={(this.state.login) ? "" : "hamburger__item"} onClick={this.viewLogin}>{(this.state.login) ?
-                                    <div className={(this.state.login) ? "hamburger__signin" : "hamburger__signin__not"}>
-                                        <SignIn />
-                                    </div> : <div>Sign in</div>}</div>
 
 
-                                <div className="hamburger__item"><a href="signup">Get started for free</a></div>
+                            {this.state.hamburger ?
+                            <div className="instanote__hamburger__div">
+                                <img src={instanote} className="instanote__hamburger" alt="instanote" />
+                                </div>
+                                : null
+
+                            }
+
+                            {this.state.hamburger ? <div class="bp3-input-group .modifier">
+                                <span class="bp3-icon bp3-icon-search"></span>
+                                <input class="bp3-input" type="search" placeholder="Search instanote" dir="auto" />
                             </div> : null}
+
+                            {this.state.hamburger ?
+
+
+                                <div className="hamburger__items">
+
+
+
+                                    <div className={(this.state.login) ? "" : "hamburger__item"} onClick={!this.state.login ? this.viewLogin : null}>{(this.state.login) ?
+                                        <div className={(this.state.login) ? "hamburger__signin" : "hamburger__signin__not"}>
+                                            <SignIn  />
+                                        </div> : <div>Sign in</div>}</div>
+
+
+                                    <div className="hamburger__item"><a href="signup">Get started for free</a></div>
+                                </div> : null}
                         </div>
                     </div>
                 }
@@ -136,4 +182,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

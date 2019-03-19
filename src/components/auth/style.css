@@ -104,6 +104,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 30px;
+  margin: 0 15px;
 }
 
 
@@ -115,10 +116,10 @@
     background-size: cover;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
     font-size: 2rem;
     align-items: center;
     color: white;
-    padding-bottom: 15%;
 }
 
 .login_title {
@@ -148,7 +149,8 @@
   margin-bottom: 20px;
 }
 .login_item {
-    font-family: 'Indie Flower', cursive;   
+    font-family: 'Indie Flower', cursive; 
+    margin-bottom: 25px;  
 }
 
 .login_input_label {
