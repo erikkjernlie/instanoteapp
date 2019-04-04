@@ -111,6 +111,8 @@
     color: white;
     border-left: 1px solid #fbb844;
     padding-left: 7px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .landing__section_imageslider {

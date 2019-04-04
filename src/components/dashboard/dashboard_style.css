@@ -8,11 +8,12 @@
 }
 
 .dashboard__container {
-    display: flex;
+    display: block;
+    /*display: flex;*/
     width: 100%;
     justify-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
+    /*flex-direction: column;*/
+    /*flex-wrap: wrap;*/
     z-index: 5;
 }
 .nodata {
@@ -21,9 +22,8 @@
     font-size: 1.8rem;
     padding: 15px;
     border-radius: 4px;
-    background-color: #453838;
-    display: flex;
-    flex-direction: column;
+    /*background-color: #453838*/
+    display: block;
     text-align: center;
 }
 

@@ -13,7 +13,7 @@ Yellow: fbb844
 /* css for Instanote.js */
 
 
-.message {
+.message_2 {
   width: 100%;
   background-color: white;
   background: linear-gradient(to right, #f0d6a9 , #f0d6a9);
@@ -459,6 +459,12 @@ width: 100%;
   justify-content: center;
   width: 100%;
   flex-wrap: wrap;
+}
+
+.flexing {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 .instanote__messages {

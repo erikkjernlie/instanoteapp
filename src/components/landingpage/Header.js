@@ -8,6 +8,7 @@ import { Redirect } from 'react-router-dom'
 import { Spinner } from "@blueprintjs/core";
 import ipad from '../../assets/pictures.png'
 import Fade from 'react-reveal/Fade';
+import ChatAnimation from './ChatAnimation';
 
 
 export class Header extends Component {
@@ -58,6 +59,7 @@ export class Header extends Component {
         return (
             <div>
                 <div className="header">
+
                 <Fade left>
                     <div className="header__column1">
                         <div className="header_text">
@@ -77,7 +79,7 @@ export class Header extends Component {
                         <div className="header_form">
                             <form onSubmit={this.handleSubmit} className="project_form">
                                 <div className="header__input">
-                                    <input className="input_field__header" type="text" id="listName" placeholder="listName" onChange={this.handleChange} autoFocus />
+                                    <input className="input_field__header" type="text" id="listName" placeholder="Your list" onChange={this.handleChange} autoFocus />
                                 </div>
 
                                 <div className="header__button">

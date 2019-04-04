@@ -11,7 +11,7 @@ import { addItem } from '../../store/actions/projectActions'
 import Item from './Item'
 import Message from './Message'
 import { ToastContainer, toast } from 'react-toastify';
-import { Intent, Icon, Popover, Classes,  PopoverInteractionKind, Position, Drawer } from "@blueprintjs/core";
+import { Intent, Icon, Popover, Classes, PopoverInteractionKind, Position, Drawer } from "@blueprintjs/core";
 import copy from '../../assets/copy.png'
 import send from '../../assets/send.svg'
 import { Spinner } from "@blueprintjs/core";
@@ -68,11 +68,24 @@ class Instanote extends Component {
         password: '',
         correctPassword: false,
         passwordMessage: '',
-        
+        size: Drawer.SIZE_STANDARD,
+        width: window.innerWidth,
 
     }
 
     componentDidUpdate(prevProps, prevState) {
+
+        if (this.state.width < 700 && this.state.size !== Drawer.SIZE_LARGE) {
+            this.setState({
+                size: Drawer.SIZE_LARGE,
+            })
+        } else {
+            if (this.state.width >= 700 && this.state.size !== Drawer.SIZE_STANDARD) {
+                this.setState({
+                    size: Drawer.SIZE_STANDARD,
+                })
+            }
+        }
 
         if (this.state.messages.length > 10 && this.state.numberOfItems === 0) {
             this.setState({
@@ -82,14 +95,14 @@ class Instanote extends Component {
         }
 
         if (prevState.isOpen !== this.state.isOpen) {
-                var objDiv = document.getElementById("message_div");
-                console.log("obdjdiv", objDiv)
-                if (objDiv) {
+            var objDiv = document.getElementById("message_div");
+            console.log("obdjdiv", objDiv)
+            if (objDiv) {
                 console.log("AUTOMATIC SCROLL YEAH")
 
-                    objDiv.scrollTop = objDiv.scrollHeight;
+                objDiv.scrollTop = objDiv.scrollHeight;
 
-                }
+            }
         }
 
         if (prevProps.newMessage !== this.props.newMessage) {
@@ -98,17 +111,17 @@ class Instanote extends Component {
             this.setState({
                 messages: newm,
             }, () => {
-     window.requestAnimationFrame(function() {
-     var objDiv = document.getElementById("message_div");
-                if (objDiv) {
-                    objDiv.scrollTop = objDiv.scrollHeight;
+                window.requestAnimationFrame(function () {
+                    var objDiv = document.getElementById("message_div");
+                    if (objDiv) {
+                        objDiv.scrollTop = objDiv.scrollHeight;
 
-                }
-               
-            });
-        })
+                    }
+
+                });
+            })
         }
-        }
+    }
 
     componentDidMount() {
         this.setState({
@@ -121,6 +134,7 @@ class Instanote extends Component {
         });
     }
     componentWillMount() {
+        window.addEventListener('resize', this.handleWindowSizeChange);
         var address = window.location.pathname
         var newAddress = address.substring(1);
         this.setState({
@@ -134,6 +148,16 @@ class Instanote extends Component {
             urlName: window.location.pathname.substr(window.location.pathname.lastIndexOf('/') + 1),
             messages: this.props.messages,
         })
+    }
+
+    // make sure to remove the listener
+    // when the component is not mounted anymore
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleWindowSizeChange);
+    }
+
+    handleWindowSizeChange = () => {
+        this.setState({ width: window.innerWidth })
     }
 
     displayDeletedData = () => {
@@ -181,7 +205,7 @@ class Instanote extends Component {
     handleMessageSubmit = (e) => {
         e.preventDefault();
         console.log("...", this.props.auth);
-        if (this.props.auth.isEmpty !== true) {
+        if (this.props.auth.isEmpty !== true && this.state.message !== "") {
             if (this.props.auth.uid !== null) {
                 console.log("ACTION WITH USER")
                 this.props.sendMessage(this.state.message, new Date(), (this.props.profile.firstName + " " + this.props.profile.lastName), this.props.auth.uid, this.state.urlName, this.props.messages);
@@ -189,8 +213,10 @@ class Instanote extends Component {
             }
         } else {
             console.log("ACTION WITHOUT USER")
+            if (this.state.message !== "") {
+                this.props.sendMessage(this.state.message, new Date(), "Guest", null, this.state.urlName, this.props.messages);
 
-            this.props.sendMessage(this.state.message, new Date(), "Guest", null, this.state.urlName, this.props.messages);
+            }
         }
 
         this.setState({
@@ -215,12 +241,12 @@ class Instanote extends Component {
     }
 
     showDrawer = () => {
-        
+
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        if (this.state.item != "") {
+        if (this.state.item !== "") {
             this.props.addItem(this.state);
             this.setState({
                 item: ''
@@ -234,16 +260,16 @@ class Instanote extends Component {
 
     }
 
-     handleOpen = () => {
-         console.log("Handle open")
-         
-        
-         this.setState({ isOpen: true });
-            
-         
-          
-     };
-     handleClose = () => this.setState({ isOpen: false });
+    handleOpen = () => {
+        console.log("Handle open")
+
+
+        this.setState({ isOpen: true });
+
+
+
+    };
+    handleClose = () => this.setState({ isOpen: false });
     render() {
         // console.log(this.props)
         const { lists, auth, profile, listError, urlName, listData, goals, listCreatedError, newMessage } = this.props; // object
@@ -264,9 +290,9 @@ class Instanote extends Component {
 
                                 <input className="instanote__input" type="text" id="item" placeholder="Add a note" value={this.state.item} onChange={this.handleChange} />
                                 <div onClick={this.handleSubmit} className="instanote__button">Add note
-                                
+
                                  <Icon icon={"add-to-artifact"} iconSize={Icon.SIZE_STANDARD} />
-                                
+
                                 </div>
 
                                 <Popover
@@ -274,15 +300,15 @@ class Instanote extends Component {
                                     popoverClassName="bp3-popover-content-sizing"
                                     position={Position.BOTTOM}
                                 >
-                                    <div className="instanote__button color2">Share your list 
+                                    <div className="instanote__button color2">Share your list
                                  <Icon icon={"share"} iconSize={Icon.SIZE_STANDARD} />
-                                    
+
                                     </div>
 
                                     <div>
 
                                         Do you wish to share your list?
-                                        
+
                                     <div className="instanote__icon">
                                             <div className="instanote__share-icon-standard">
                                                 <FacebookShareButton url={'www.appear.in/' + this.state.urlName} quote="Press the link to access my notes">
@@ -328,70 +354,70 @@ class Instanote extends Component {
                                     </div>
                                 </Popover>
                                 <div className="instanote__button color3" onClick={this.displayDeletedData}>
-                                See completed notes
+                                    See completed notes
                                 <Icon icon={"history"} iconSize={Icon.SIZE_STANDARD} />
                                 </div>
-                                <div  className="instanote__button color4" onClick={this.handleOpen}>
-                                Show chat
+                                <div className="instanote__button color4" onClick={this.handleOpen}>
+                                    Show chat
                                  <Icon icon={"chat"} iconSize={Icon.SIZE_STANDARD} />
 
                                 </div>
-<Drawer
-                    icon="chat"
-                    onClose={this.handleClose}
-                    title="INSTANOTE CHAT"
-                    {...this.state}
-                >
-                    <div className={"testing" + Classes.DRAWER_BODY}>
-                        <div className={Classes.DIALOG_BODY}>
-                            <p>
-                                <strong>
-                                    Instachat incorporated a chat so you can easily chat with whomever you want - with one advantage compared to other chats:
-                                    store the messages you want to remember - simply click on a message and press the "add note"-button, and it will automatically be stored to your notes. 
+                                <Drawer
+                                    icon="chat"
+                                    onClose={this.handleClose}
+                                    title="INSTANOTE CHAT"
+                                    {...this.state}
+                                >
+                                    <div className={"testing" + Classes.DRAWER_BODY}>
+                                        <div className={Classes.DIALOG_BODY}>
+                                            <p>
+                                                <strong>
+                                                    Instachat incorporated a chat so you can easily chat with whomever you want - with one advantage compared to other chats:
+                                                    store the messages you want to remember - simply click on a message and press the "add note"-button, and it will automatically be stored to your notes.
                                 </strong>
-                            </p>
-                        <div className="instanote__column__chat">
+                                            </p>
+                                            <div className="instanote__column__chat">
 
-                           <div className="instanote__column__chat__div">
-                                <div className="instanote__messages" id="message_div">
+                                                <div className="instanote__column__chat__div">
+                                                    <div className="instanote__messages" id="message_div">
 
-                                    <div>
-                                        <div className="welcome_chat">Welcome to this chat</div>
-                                        <div onClick={this.showMoreMessages}  className="welcome_more">Show more messages</div>
+                                                        <div>
+                                                            <div className="welcome_chat">Welcome to this chat</div>
+                                                            <div onClick={this.showMoreMessages} className="welcome_more">Show more messages</div>
 
-                                        {this.props.messages && this.state.didMount && this.state.messages && this.state.messages.slice(this.state.numberOfItems, this.state.messages.length).map((message,b) => {
-                                            //projects in case we don't have any projects
-                                            // IF CORRECT ID HERE
-                                            // let newList = lists[list]
-                                            //console.log(newList)
-                                            // let firestoreList = ..
-                                            return (
-                                                <div key={b}>
-                                                    <Message info={message} profile={profile} auth={auth} />
+                                                            {this.props.messages && this.state.didMount && this.state.messages && this.state.messages.slice(this.state.numberOfItems, this.state.messages.length).map((message, b) => {
+                                                                //projects in case we don't have any projects
+                                                                // IF CORRECT ID HERE
+                                                                // let newList = lists[list]
+                                                                //console.log(newList)
+                                                                // let firestoreList = ..
+                                                                return (
+                                                                    <div key={b}>
+                                                                        <Message info={message} profile={profile} auth={auth} />
+                                                                    </div>
+                                                                )
+                                                            })}
+                                                        </div>
+
+                                                    </div>
+                                                    <form onSubmit={this.handleMessageSubmit} className="instanote__type__messages">
+
+                                                        <input className="instanote__input__message" type="text" id="message" value={this.state.message} placeholder="Write a message..." onChange={this.handleChange} />
+                                                        <div onClick={this.handleSubmit} className="instanote__button__message">
+                                                            <img className="instanote__send-icon" src={send} alt="Copy link" />
+
+
+
+                                                        </div>
+                                                    </form>
+
+
                                                 </div>
-                                            )
-                                        })}
+                                            </div>
+                                        </div>
                                     </div>
-
-                                </div>
-                                <form onSubmit={this.handleMessageSubmit} className="instanote__type__messages">
-
-                                    <input className="instanote__input__message" type="text" id="message" value={this.state.message} placeholder="Write a message..." onChange={this.handleChange} />
-                                    <div onClick={this.handleSubmit} className="instanote__button__message">
-                                        <img className="instanote__send-icon" src={send} alt="Copy link" />
-
-
-
-                                    </div>
-                                </form>
-
-
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    <div className={Classes.DRAWER_FOOTER}>Sign in to use your own name in the chat. </div>
-                </Drawer>
+                                    <div className={Classes.DRAWER_FOOTER}>{this.props.auth.isEmpty ? <div>Sign in to use your own name in the chat.</div> : null}</div>
+                                </Drawer>
 
 
 
@@ -415,7 +441,7 @@ class Instanote extends Component {
                             </div>
 
                                 : null}
-                            
+
 
                         </div>
                         <div className="instanote__column__notes">
@@ -480,13 +506,13 @@ class Instanote extends Component {
                         </div>*/}
                     </div> : <div className="instanote__loading-data">{listCreatedError ?
                         <div className="title">List does not exist</div>
-                        : <div>{(listData.public || !listData || this.state.correctPassword) ? <Spinner intent="warning" /> : 
-                        
-                        
-                        <div className="password__container">
-                        <div className="password__warningText">We are sorry. This list is marked as private.</div>
-                        
-                         <form onSubmit={this.handlePassword} className="handle__password__form">
+                        : <div>{(listData.public || !listData || this.state.correctPassword) ? <Spinner intent="warning" /> :
+
+
+                            <div className="password__container">
+                                <div className="password__warningText">We are sorry. This list is marked as private.</div>
+
+                                <form onSubmit={this.handlePassword} className="handle__password__form">
 
                                     <input className="password__input" type="text" id="password" value={this.state.password} placeholder="Write a message..." onChange={this.handleChange} />
                                     <div onClick={this.handlePassword} className="password__button">
@@ -496,13 +522,13 @@ class Instanote extends Component {
 
                                     </div>
                                 </form>
-                                    {this.state.passwordMessage ? <div className="password__errorText">{this.state.passwordMessage}</div> : null}
+                                {this.state.passwordMessage ? <div className="password__errorText">{this.state.passwordMessage}</div> : null}
 
-                        
-                        
-                        
-                        </div>
-                        
+
+
+
+                            </div>
+
                         }</div>}</div>}
 
 

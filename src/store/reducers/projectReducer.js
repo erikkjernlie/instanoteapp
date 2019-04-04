@@ -151,6 +151,11 @@ const projectReducer = (state = initState, action) => {
                 errorMessage: '',
                 isFetchingPassword: false,
             }
+        case 'UPDATED_PASSWORD_REQUEST': 
+            return {
+                ...state,
+                isFetchingPassword: true,
+            }
         case 'UPDATED_PASSWORD_FAIL':
             return {
                 ...state,

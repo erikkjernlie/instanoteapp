@@ -87,7 +87,8 @@ class Navbar extends Component {
                         </div>
                         <div className="navbar__content">
                             {this.state.hamburger ?
-                                <img src={instanote} className="instanote__hamburger" alt="instanote" />
+                                <div className="instanote__hamburger__div">
+                                <img src={instanote} className="instanote__hamburger" alt="instanote" /></div>
                                 : null
 
                             }

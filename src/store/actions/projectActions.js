@@ -27,7 +27,10 @@ export const createProject = (project) => {
 export const setPassword = (password, urlName) => {
         console.log(password, urlName)
 
+        
 return (dispatch, getState, { getFirebase, getFirestore }) => {
+    dispatch({ type: 'UPDATED_PASSWORD_REQUEST'})
+
         // make async call to database
         const firestore = getFirestore(); // reference to firestore
         const profile = getState().firebase.profile;
@@ -173,7 +176,7 @@ export const createList = (list) => {
         const profile = getState().firebase.profile;
         // in case not logged in
         if (getState().firebase.profile.isEmpty) {
-            const usersRef = firestore.collection('lists').doc(list.listName);
+            const usersRef = firestore.collection('lists').doc(list.listName.toLowerCase());
             console.log("USER IS NOT LOGGED IN")
             usersRef.get()
                 .then((docSnapshot) => {
@@ -186,8 +189,8 @@ export const createList = (list) => {
                     } else {
                         let goals = ['My first goal', 'My second goal - tap me to remove me'];
                         let deleted = ['My first recover'];
-                        firestore.collection('lists').doc(list.listName).set({
-                            name: list.listName,
+                        firestore.collection('lists').doc(list.listName.toLowerCase()).set({
+                            name: list.listName.toLowerCase(),
                             goals: goals,
                             deleted: deleted,
                             madeBy: null,
@@ -195,7 +198,7 @@ export const createList = (list) => {
                             createdOn: new Date(),
                             password: "",
                         }).then(() => {
-                            firestore.collection('lists').doc(list.listName).collection('messages').doc().set({
+                            firestore.collection('lists').doc(list.listName.toLowerCase()).collection('messages').doc().set({
                                 createdBy: 'Instanote',
                                 time: new Date(),
                                 message: 'Chat here',
@@ -203,7 +206,7 @@ export const createList = (list) => {
                             }).then(() => {
                                 dispatch({ type: 'CREATE_LIST', list: list });
                             });
-                            window.location.replace(list.listName)
+                            window.location.replace(list.listName.toLowerCase())
                         }).catch((err) => {
                             dispatch({ type: 'CREATE_LIST_ERROR', err });
                         }
@@ -214,7 +217,7 @@ export const createList = (list) => {
         } else {
             let goals = ['My first goal', 'My second goal - tap me to remove me'];
             let deleted = ['My first recover'];
-            const usersRef = firestore.collection('lists').doc(list.listName);
+            const usersRef = firestore.collection('lists').doc(list.listName.toLowerCase());
             console.log("USER IS LOGGED IN, GETS IN HERERE REI")
             console.log("USER IS LOGGED IN, GETS IN HERERE REI")
             console.log("USER IS LOGGED IN, GETS IN HERERE REI")
@@ -236,8 +239,8 @@ export const createList = (list) => {
 
                         const authorId = getState().firebase.auth.uid;
                         console.log(getState())
-                        firestore.collection('lists').doc(list.listName).set({
-                            name: list.listName,
+                        firestore.collection('lists').doc(list.listName.toLowerCase()).set({
+                            name: list.listName.toLowerCase(),
                             goals: goals,
                             deleted: deleted,
                             madeBy: authorId,
@@ -245,7 +248,7 @@ export const createList = (list) => {
                             createdOn: new Date(),
                             password: "",
                         }).then(() => {
-                            firestore.collection('lists').doc(list.listName).collection('messages').doc().set({
+                            firestore.collection('lists').doc(list.listName.toLowerCase()).collection('messages').doc().set({
                                 createdBy: 'Instanote',
                                 time: new Date(),
                                 message: 'Chat here',
@@ -261,7 +264,7 @@ export const createList = (list) => {
                                         for (let j = 0; j < doc.data().lists.length; j++) {
                                             newList.push(doc.data().lists[j])
                                         }
-                                        newList.push(list.listName);
+                                        newList.push(list.listName.toLowerCase());
                                         firestore.collection('users').doc(authorId).update({
                                             lists: newList
                                         });
@@ -277,7 +280,7 @@ export const createList = (list) => {
                                 });
 
                             }).then(() => {
-                                window.location.replace(list.listName)
+                                window.location.replace(list.listName.toLowerCase())
 
                             }).catch(function (error) {
                                 console.log("Error getting document:", error);
@@ -377,6 +380,7 @@ export const deleteItem = (information) => {
 
                 let goals2 = doc.data().goals;
                 var index = goals2.indexOf(information.inputText);
+                // SPLICE MUST BE A PROBLEM
                 if (index > -1) {
                     goals2.splice(index, 1);
                 }

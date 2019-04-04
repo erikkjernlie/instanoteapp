@@ -115,9 +115,9 @@ class Dashboard extends Component {
 
                         {(this.state.loading)? <div className="spinner__loading"><Spinner intent="warning" /></div> :
                             <div>{(data_list) ? <div className="mylists">{data_list.map(
-                                d => {
+                                (d, i) => {
                                     return (
-                                        <NoteItem d={d} key={d.name} publicValue={d.public} />
+                                        <NoteItem d={d} key={i} publicValue={d.public} />
 
                                     );
                                 }
@@ -127,7 +127,7 @@ class Dashboard extends Component {
 
                     </div>
                     <div className="dashboard_row">
-                        {(this.props.gotNoData === 'You have no data')  ? <div className="nodata"><div>It looks like you do not have any data.</div><div className="nodata__fail">If you have created any lists, we recommend you to update the page. </div></div> : <div></div>}
+                        {(this.props.gotNoData === 'You have no data')  ? <div className="nodata"><div>It looks like you do not have any data, so you can go ahead and create a list.</div><div className="nodata__fail">If you have created any lists, we recommend you to update the page. </div></div> : <div></div>}
                     </div>
                 </div>
                 <ToastContainer />

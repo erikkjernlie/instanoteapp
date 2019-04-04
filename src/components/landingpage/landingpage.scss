@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box;
+    box-sizing: border-box !important;
 }
 
 /* LANDING PAGE */
@@ -209,6 +209,37 @@
     z-index: 1000;
 }
 
+
+.landing__section5 {
+    margin-top: 100px;
+    height: auto;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #453838;
+    padding-top: 80px;
+    padding-bottom: 100px;
+    font-family: 'ABeeZee', sans-serif;
+    z-index: 1000;
+    display: block;
+    height: auto;
+}
+.landing__section5__container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.chat__cont {
+    flex: 1;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+}
 .section_imageslider {
     display: none;
     width: 100%;
@@ -306,6 +337,34 @@
     font-family: 'Patrick Hand', cursive;
     text-transform: uppercase;
     text-align: center;
+}
+
+.landing__title__chat {
+    color: #fbb844;
+    font-size: 4.5rem;
+    font-family: 'Patrick Hand', cursive;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.landing__title__subtext {
+    color: white;
+    font-size: 2.0rem;
+    font-family: 'Patrick Hand', cursive;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.landing__title__subtext__div {
+    max-width: 700px;
 }
 
 .project_form {
@@ -570,3 +629,4 @@
         padding-top: 70px;
     }
 }
+

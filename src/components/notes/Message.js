@@ -59,7 +59,7 @@ class Message extends Component {
 
                         </div>
                         <Tooltip content={<div>{String(moment(this.props.info.time.toDate()).fromNow())}</div>} >
-                        <div className={this.props.info.uid === this.props.auth.uid ? "message_me" : "message"}>
+                        <div className={this.props.info.uid === this.props.auth.uid ? "message_me" : "message_2"}>
                             <div>{this.props.info.message}</div>
                                         {this.state.showNote ?  <div className="add_note_div_img">
 

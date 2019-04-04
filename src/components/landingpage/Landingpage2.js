@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import Header from './Header';
 import ImageSlider from './ImageSlider';
+import ChatAnimation from './ChatAnimation';
 import step1 from '../../assets/images/step1.jpg'
 import step2 from '../../assets/images/step2.jpg'
 import step3 from '../../assets/images/step3.jpg'
@@ -19,10 +20,34 @@ import { connect } from 'react-redux'
 
 
 class Landingpage2 extends Component {
+
+
+
+    state = {
+        showChat: false,
+    }
     constructor(props) {
         super(props);
 
+
     }
+
+    componentDidMount() {
+        window.addEventListener("scroll", function() {
+            var elementTarget = document.getElementById("section-2");
+            if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight)) {
+                this.setState({
+                    showChat: true,
+                })
+            }
+          }.bind(this))
+    }
+
+
+
+
+
+
     render() {
         const { auth } = this.props;
         // console.log(auth);
@@ -39,8 +64,12 @@ class Landingpage2 extends Component {
                 <Header />
 
             <div className="landing__section1">
+
+               
+
                 <Fade bottom>
                         <div className="landing__title">How does instanote work?</div>
+
                         <div className="landing__subtext">
                             Instanote lets you create online shareable lists in seconds, without creating
                         an account. With instanote, you can
@@ -58,7 +87,7 @@ class Landingpage2 extends Component {
                             <ImageSlider />
 
                         </div>
-                        <div className="landing__steps__image__slider">
+                        <div  className="landing__steps__image__slider">
                             <img src={step1} className="landing__step" alt="personal" />
                             <img src={step2} className="landing__step" alt="shopping" />
                             <img src={step3} className="landing__step" alt="wishing list" />
@@ -66,12 +95,17 @@ class Landingpage2 extends Component {
 
                     </Fade>
             </div>
-            <div className="landing__section2">
+
+           
+
+
+            <div className="landing__section2"  id="section-2">
                     <Fade bottom>
 
                         <div className="landing__title">What can I use it for?</div>
 
-                        <div className="landing__subtext">Use it for whatever you want blabla</div>
+                        <div className="landing__subtext">Use it for whatever you want - create your own personal notes, create easily shareable shopping lists, wishing lists, 
+                        or simply write down the things you have to remember.</div>
                     </Fade>
 
                     <Fade bottom>
@@ -83,7 +117,21 @@ class Landingpage2 extends Component {
                         </div>
                     </Fade>
                 </div>
-                <div className="landing__section4">
+                <div className="landing__section5" >
+
+{this.state.showChat ? 
+<div className="landing__section5__container">
+<Fade bottom>
+    <div className="chat__cont">
+    <ChatAnimation showChat={this.state.showChat} />
+    </div>
+    </Fade>
+</div>
+
+: null}
+</div>
+
+                <div className="landing__section3">
                     <Fade bottom>
 
                         <div className="landing__title">Do I need to create a user?</div>
@@ -100,7 +148,7 @@ class Landingpage2 extends Component {
                     </Fade>
 
                 </div>
-                <div className="landing__section3">
+                <div className="landing__section4">
                     <Fade bottom>
 
                         <div className="landing__title">Contact or questions</div>
@@ -115,7 +163,7 @@ class Landingpage2 extends Component {
                         </div>
 
                         <div className="contact-space">
-                            or if the email address was too long
+                            or if the email address was too long:
     
                         </div>
                         <div className="contact-instanote">
@@ -127,6 +175,7 @@ class Landingpage2 extends Component {
                     </Fade>
 
             </div>
+     
         </div>
         )
     }

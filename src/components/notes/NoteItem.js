@@ -125,7 +125,18 @@ THIS IS WHY THE VALUE CHANGES
                     <div className="mylist__password__column">
                         <EditableText id="inputText" className="TEST_INPUT_2" onChange={this.handleChange} value={this.state.inputText} multiline={false} placeholder={this.props.d.password ? ("Your password: " + this.props.d.password) : "Set a password"}/>
 
-                        <div onClick={this.handleSubmit} className="instanote__setpassword">Set password</div>
+                        <div onClick={this.handleSubmit} className="instanote__setpassword">
+                        
+                        
+                        {(this.props.isFetchingPassword) ? <div className="flexing">
+                            <Spinner intent="warning" size={Spinner.SIZE_SMALL} />
+                        Setting password</div> : <div>
+                        
+                        Set password</div>}
+                        
+                        
+                        </div>
+                        
                     </div>
                     </form>
                 
@@ -141,7 +152,9 @@ const mapStateToProps = (state) => {
         publicValue: state.project.publicValue,
         errorMessage: state.project.errorMessage,
         isFetchingUpdate: state.project.isFetchingUpdate,
+        isFetchingPassword: state.project.isFetchingPassword,
         keyVal: state.project.key,
+        
 
     }
 }
