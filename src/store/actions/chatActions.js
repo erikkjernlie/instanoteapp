@@ -102,7 +102,7 @@ export const joinChat = (chat) => {
     }
 }
 
-
+// DOES IT GET ALL THE WHEN IT CHANGES?
 export const subToChat = (chat) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         console.log('subToChat', chat);
