@@ -206,6 +206,8 @@ height: calc(100vh-50px);
     margin: 20px;
     flex-direction: column;
     flex: 1;
+    margin-top: 15px;
+
 
 }
 
@@ -537,7 +539,7 @@ width: 100%;
     width: 100%;
     padding-top: 7px;
     padding-bottom: 7px;
-    margin: 15px 0px;
+    margin: 5px 0px;
     flex-wrap: wrap;
     cursor: pointer;
     box-shadow: 9px 9px 28px -8px rgba(0,0,0,0.75);
@@ -552,6 +554,12 @@ width: 100%;
 }
 .item__wrapper:active {
 
+}
+
+@media only screen and (min-width: 600px) {
+  .item__wrapper {
+    margin: 15px 0px;
+  }
 }
 .item__input {
     display: flex;

@@ -490,25 +490,17 @@ class Instanote extends Component {
 
                                 </div>
                                 <form onSubmit={this.handleMessageSubmit} className="instanote__type__messages">
-
                                     <input className="instanote__input__message" type="text" id="message" value={this.state.message} placeholder="type text" onChange={this.handleChange} />
                                     <div onClick={this.handleSubmit} className="instanote__button__message">
                                         <img className="instanote__send-icon" src={send} alt="Copy link" />
-
-
-
                                     </div>
                                 </form>
-
-
                             </div>
 
                         </div>*/}
                     </div> : <div className="instanote__loading-data">{listCreatedError ?
                         <div className="title">List does not exist</div>
                         : <div>{(listData.public || !listData || this.state.correctPassword) ? <Spinner intent="warning" /> :
-
-
                             <div className="password__container">
                                 <div className="password__warningText">We are sorry. This list is marked as private.</div>
 
@@ -523,10 +515,6 @@ class Instanote extends Component {
                                     </div>
                                 </form>
                                 {this.state.passwordMessage ? <div className="password__errorText">{this.state.passwordMessage}</div> : null}
-
-
-
-
                             </div>
 
                         }</div>}</div>}

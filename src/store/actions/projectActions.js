@@ -386,11 +386,16 @@ export const deleteItem = (information) => {
                 }
                 let deleted2 = doc.data().deleted;
                 deleted2.push(information.inputText)
+                console.log("after update", goals2);
+                console.log("new deleted list", deleted2);
                 firestore.collection('lists').doc(information.urlName).update({
                     goals: goals2,
                     deleted: deleted2
                 }).then(() => {
+                    // let listData = doc.data();
+                                
                     dispatch({ type: 'DELETE_ITEM', information: information });
+                    
                 })
 
             } else {

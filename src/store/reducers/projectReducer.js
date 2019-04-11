@@ -75,7 +75,7 @@ const projectReducer = (state = initState, action) => {
             return {
                 ...state,
                 item: action.item,
-                urlName: action.urlName
+                urlName: action.urlName,
             }
         case 'RECOVERED_ITEM':
             console.log('recovered item');
