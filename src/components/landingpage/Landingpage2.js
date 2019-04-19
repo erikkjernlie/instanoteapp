@@ -32,7 +32,10 @@ class Landingpage2 extends Component {
 
     }
 
+
+
     componentDidMount() {
+        /*
         window.addEventListener("scroll", function() {
             var elementTarget = document.getElementById("section-2");
             if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight)) {
@@ -41,6 +44,8 @@ class Landingpage2 extends Component {
                 })
             }
           }.bind(this))
+
+        */
     }
 
 
@@ -117,7 +122,7 @@ class Landingpage2 extends Component {
                         </div>
                     </Fade>
                 </div>
-                <div className="landing__section5" >
+                {/*<div className="landing__section5" >
 
 {this.state.showChat ? 
 <div className="landing__section5__container">
@@ -129,9 +134,9 @@ class Landingpage2 extends Component {
 </div>
 
 : null}
-</div>
+</div>*/}
 
-                <div className="landing__section3">
+                <div className="landing__section4">
                     <Fade bottom>
 
                         <div className="landing__title">Do I need to create a user?</div>
@@ -148,7 +153,7 @@ class Landingpage2 extends Component {
                     </Fade>
 
                 </div>
-                <div className="landing__section4">
+                {/*<div className="landing__section4">
                     <Fade bottom>
 
                         <div className="landing__title">Contact or questions</div>
@@ -174,7 +179,7 @@ class Landingpage2 extends Component {
                     </div>
                     </Fade>
 
-            </div>
+            </div>*/}
      
         </div>
         )

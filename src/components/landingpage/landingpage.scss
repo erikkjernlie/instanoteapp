@@ -113,6 +113,41 @@
     font-family: 'Patrick Hand', cursive;
 }
 
+.header__uppercase {
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-size: 4.8rem;
+
+}
+
+.error__message {
+    color: white;
+    margin-top: 20px;
+    padding-left: 20px;
+    border-left: 1px solid red;
+    font-size: 2rem;
+    font-family: 'Patrick Hand', cursive;
+}
+
+.padding-right {
+    padding-right: 10px;
+}
+
+.here {
+    font-style: italic;
+    font-size: 2rem;
+}
+
+.here:hover {
+    cursor: pointer;
+    
+}
+
+.changeofwords {
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
 .header_error {
     position: relative;
     z-index: 10;

@@ -142,7 +142,7 @@ class Item extends Component {
                         </div>
 
                     </Fade> :
-                    <Fade left>
+                    <Fade right>
                         <div>{this.state.updateText ?
                             <div className={"item__wrapper " + (this.props.type ? 'yellow' : 'black')}>
                                 <div className="item__input">

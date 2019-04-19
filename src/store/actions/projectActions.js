@@ -153,6 +153,7 @@ export const getList = (list) => {
             firestore.collection('lists').doc(list.urlName).onSnapshot(function (doc) {
                 if (doc.exists) {
                     listData = doc.data();
+                    console.log("CHANGAINGIANGIANGIAIGNADIGNAIDGN")
                     dispatch({ type: 'GET_LIST', listData: listData }) // MAKE SOMETHING HERE SO I CAN GET THE LISTS CORRESPONDING TO A USERS
 
                 } else {
@@ -356,7 +357,7 @@ export const addItem = (information) => {
                 firestore.collection('lists').doc(information.urlName).update({
                     goals: goals2
                 }).then(() => {
-                    dispatch({ type: 'ADD_ITEM', information: information });
+                    // dispatch({ type: 'ADD_ITEM', information: information });
                 })
             } else {
                 // doc.data() will be undefined in this case
@@ -378,24 +379,34 @@ export const deleteItem = (information) => {
         docRef.get().then(function (doc) {
             if (doc.exists) {
 
-                let goals2 = doc.data().goals;
+               // let goals2 = doc.data().goals;
+                /*
                 var index = goals2.indexOf(information.inputText);
+                console.log("FUCKING INDEX: ", index)
                 // SPLICE
                 if (index > -1) {
                     goals2.splice(index, 1);
                 }
+                */
+               let goals2 = doc.data().goals.filter(function(value, index, arr){
+                   return value !== information.inputText;
+               });
+
                 let deleted2 = doc.data().deleted;
+
                 deleted2.push(information.inputText)
-                console.log("after update", goals2);
+                console.log("after update: GOALS2", goals2);
                 console.log("new deleted list", deleted2);
                 firestore.collection('lists').doc(information.urlName).update({
                     goals: goals2,
                     deleted: deleted2
                 }).then(() => {
                     // let listData = doc.data();
-                                
-                    dispatch({ type: 'DELETE_ITEM', information: information });
-                    
+                    docRef.get().then(function (doc2) {     
+                        dispatch({ type: 'DELETE_ITEM' });
+                        let listData = doc2.data();
+                        dispatch({ type: 'GET_LIST', listData: listData }) 
+                    })
                 })
 
             } else {

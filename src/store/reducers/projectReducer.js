@@ -31,12 +31,11 @@ const projectReducer = (state = initState, action) => {
                 ...state,
                 listError: 'Failed to create list'
             }
-            return state;
         case 'CREATE_LIST_ALREADY_EXIST':
             console.log('list already exists', action.list)
             return {
                 ...state,
-                listError: 'failed to create list because a list already exists'
+                listError: 'A list with this name already exists.'
             }
         case 'GET_LISTS':
             console.log('lists are here', action.lists)
@@ -74,8 +73,6 @@ const projectReducer = (state = initState, action) => {
             console.log(action)
             return {
                 ...state,
-                item: action.item,
-                urlName: action.urlName,
             }
         case 'RECOVERED_ITEM':
             console.log('recovered item');

@@ -9,6 +9,8 @@ import Landingpage from './components/landingpage/Landingpage'
 import Landingpage2 from './components/landingpage/Landingpage2'
 import Instanote from './components/notes/Instanote'
 import './index.css'
+import ReactGA from 'react-ga';
+
 class App extends Component {
 
 

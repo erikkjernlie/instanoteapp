@@ -18,14 +18,45 @@ export class Header extends Component {
         date: new Date(),
         loading: false,
         errorMessage: '',
+        words: ['a list in 2 seconds', 'shopping lists', 'notes', 'wishing lists'],
+        index: 0,
+        show: true,
+
     }
     handleChange = (e) => {
+        
         this.setState({
             [e.target.id]: e.target.value,
             loading: false,
             errorMessage: '',
         });
+        if (this.props.listError && this.state.show) {
+            this.setState({
+                show: false,
+            })
+        } 
         // this.props.getLists(); THIS ONE NEEDS TO BE COMMMENTED OUT RIGHT????
+    }
+
+    componentDidMount() {
+        setInterval(() => {
+            if ((this.state.index + 1) < this.state.words.length ) {
+                this.setState({
+                    index: (this.state.index+1),
+                })
+            } else {
+                this.setState({
+                    index: 0,
+                })
+            }
+            
+        }, 3000);
+    }
+
+
+
+    navigateUser = () => {
+        window.location.href = this.state.listName;
     }
 
     handleSubmit = (e) => {
@@ -45,16 +76,21 @@ export class Header extends Component {
                     loading: true
                 })
                 this.props.createList(this.state);
+                    this.setState({
+                        show: true,
+                    })
             }
 
 
         }
+
         // add to the list here
         // console.log(this.state);
     }
 
     render() {
         const { profile, listError, lists } = this.props;
+        let i = 0;
 
         return (
             <div className="z">
@@ -83,7 +119,7 @@ export class Header extends Component {
                     <Fade left>
                         <div className="header__column1">
                             <div className="header_text">
-                                <div>CREATE A LIST IN 2 SECONDS</div>
+                                <div className="header__uppercase">Create <span className="changeofwords">{this.state.words[this.state.index]}</span></div>
                                 <div className="header_items">
                                     <div className="header_item">
                                         online sharable lists in seconds
@@ -102,21 +138,36 @@ export class Header extends Component {
                                         <input className="input_field__header" type="text" id="listName" placeholder="Your list" onChange={this.handleChange} autoFocus />
                                     </div>
 
+                                    
+                                    {(!listError && this.state.loading) ? 
+                                    
+                                        <div className="header__button">
+                                        <Button type="submit" className="create_list__btn__header"> 
+                                            <span className="padding-right">Creating list</span>   <Spinner intent="warning" size={Spinner.SIZE_SMALL} />
+                                    </Button>
+                                    
+                                    </div>
+                                    
+                                     : 
                                     <div className="header__button">
                                         <Button type="submit" className="create_list__btn__header">
                                             Create list
                                     </Button>
-                                    </div>
+                                    </div>}
 
                                 </form>
                             </div>
-                            <div className="header_error_div">{this.state.errorMessage ? <div className="header_error">{this.state.errorMessage}</div> : <div></div>}</div>
+                            <div className="header_error_div">
+                            {this.state.errorMessage ? 
+                            <div className="header_error">{this.state.errorMessage}</div> : 
+                            null}
+                            
+                            </div>
 
 
                             <div className="header__loading">
-                                <div className="subtext">
-                                    {(!listError && this.state.loading) ? <Spinner intent="warning" /> : null}
-                                    {(listError) ? <p>{listError}</p> : null}
+                                <div className="error__message">
+                                    {(listError && this.state.show) ? <p>Sorry, this list already exist. To go to {this.state.listName}, press <span className="here" onClick={this.navigateUser}>here</span>.</p> : null}
                                 </div>
                             </div>
                         </div>

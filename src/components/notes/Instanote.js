@@ -73,6 +73,7 @@ class Instanote extends Component {
 
     }
 
+    /* FOR CHAT COMPONENT
     componentDidUpdate(prevProps, prevState) {
 
         if (this.state.width < 700 && this.state.size !== Drawer.SIZE_LARGE) {
@@ -122,6 +123,7 @@ class Instanote extends Component {
             })
         }
     }
+    */
 
     componentDidMount() {
         this.setState({
@@ -129,7 +131,7 @@ class Instanote extends Component {
             didMount: true
         })
 
-        toast.success("Remember to try out Instanote's new chat function - you can easily add important messages to your notes by clicking on the message", {
+        toast.success("Welcome. To share this list - send www.instanote.no/" + this.state.urlName + " to whomever you want", {
             position: toast.POSITION.BOTTOM_CENTER,
         });
     }
@@ -143,23 +145,27 @@ class Instanote extends Component {
         })
         this.props.getList(this.state)
         // this.props.subToChat(this.state);
-
+        /*
+        FOR CHAT COMPONENT
         this.props.joinChat({
             urlName: window.location.pathname.substr(window.location.pathname.lastIndexOf('/') + 1),
             messages: this.props.messages,
         })
+        */
     }
 
     // make sure to remove the listener
     // when the component is not mounted anymore
+    /* FOR CHAT COMPONENT
     componentWillUnmount() {
         window.removeEventListener('resize', this.handleWindowSizeChange);
     }
+    
 
     handleWindowSizeChange = () => {
         this.setState({ width: window.innerWidth })
     }
-
+*/
     displayDeletedData = () => {
         this.setState({
             displayDeletedData: !this.state.displayDeletedData,
@@ -202,6 +208,11 @@ class Instanote extends Component {
         });
     }
 
+
+    /*
+
+    FOR CHAT COMPONENT
+
     handleMessageSubmit = (e) => {
         e.preventDefault();
         console.log("...", this.props.auth);
@@ -226,6 +237,8 @@ class Instanote extends Component {
 
     }
 
+    
+
     showMoreMessages = () => {
 
         let numberOfMessages = this.state.messages.length;
@@ -243,6 +256,8 @@ class Instanote extends Component {
     showDrawer = () => {
 
     }
+
+    */
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -354,14 +369,17 @@ class Instanote extends Component {
                                     </div>
                                 </Popover>
                                 <div className="instanote__button color3" onClick={this.displayDeletedData}>
-                                    See completed notes
-                                <Icon icon={"history"} iconSize={Icon.SIZE_STANDARD} />
+                                    {this.state.displayDeletedData ?  <span>Hide completed notes</span> : <span>See completed notes</span>} 
+                                    <Icon icon={"history"} iconSize={Icon.SIZE_STANDARD} />
                                 </div>
+                                {/*
+                                FOR CHAT COMPONENT
+                                
                                 <div className="instanote__button color4" onClick={this.handleOpen}>
                                     Show chat
                                  <Icon icon={"chat"} iconSize={Icon.SIZE_STANDARD} />
 
-                                </div>
+                                </div> 
                                 <Drawer
                                     icon="chat"
                                     onClose={this.handleClose}
@@ -418,7 +436,7 @@ class Instanote extends Component {
                                     </div>
                                     <div className={Classes.DRAWER_FOOTER}>{this.props.auth.isEmpty ? <div>Sign in to use your own name in the chat.</div> : null}</div>
                                 </Drawer>
-
+*/}
 
 
 
@@ -426,6 +444,25 @@ class Instanote extends Component {
 
 
                             </form>
+
+
+
+                        </div>
+                        <div className="instanote__column__notes">
+                            {listData ? <div>
+                                {listData.goals && listData.goals.map((goal, j) => {
+                                    //projects in case we don't have any projects
+                                    // IF CORRECT ID HERE
+                                    // let newList = lists[list]
+                                    //console.log(newList)
+                                    // let firestoreList = ..
+                                    console.log("GOAL:", goal, j);
+                                    return (
+                                        <Item type="goal" key={j} text={goal} urlName={this.state.urlName} />
+                                    )
+                                })}
+
+                            </div> : <Spinner intent="warning" />}
                             {(listData && this.state.displayDeletedData) ? <div>
                                 {listData.deleted && listData.deleted.map((deletedItem, i) => {
                                     //projects in case we don't have any projects
@@ -441,23 +478,6 @@ class Instanote extends Component {
                             </div>
 
                                 : null}
-
-
-                        </div>
-                        <div className="instanote__column__notes">
-                            {listData ? <div>
-                                {listData.goals && listData.goals.map((goal, j) => {
-                                    //projects in case we don't have any projects
-                                    // IF CORRECT ID HERE
-                                    // let newList = lists[list]
-                                    //console.log(newList)
-                                    // let firestoreList = ..
-                                    return (
-                                        <Item type="goal" key={j} text={goal} urlName={this.state.urlName} />
-                                    )
-                                })}
-
-                            </div> : <Spinner intent="warning" />}
 
 
 
